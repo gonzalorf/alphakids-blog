@@ -17,4 +17,9 @@
     <ProjectReference Include="..\AlphaKids.Domain\AlphaKids.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\Commands\" />
+    <Folder Include="Users\Queries\" />
+  </ItemGroup>
+
 </Project>

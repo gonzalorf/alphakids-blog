@@ -1,7 +1,7 @@
-﻿using AlphaKids.Application.Posts.Create;
+﻿using AlphaKids.Application.Posts.Commands.Create;
+using AlphaKids.Application.Posts.Commands.Remove;
+using AlphaKids.Application.Posts.Commands.Update;
 using AlphaKids.Application.Posts.Queries;
-using AlphaKids.Application.Posts.Remove;
-using AlphaKids.Application.Posts.Update;
 using AlphaKids.Domain.Posts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

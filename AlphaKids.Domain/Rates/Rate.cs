@@ -7,15 +7,16 @@ public class Rate
 {
     public Rate() { }
 
-    public Rate(RateId id, int value, User rater)
+    public Rate(RateId id, PostId postId, int value, UserId? raterId)
     {
         Id = id;
+        PostId = postId;
         Value = value;
-        Rater = rater;
+        RaterId = raterId;
     }
 
     public RateId Id { get; private set; }
     public PostId PostId { get; private set; }
     public int Value { get; private set; }
-    public User Rater { get; private set; }
+    public UserId? RaterId { get; private set; }
 }
