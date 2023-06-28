@@ -14,19 +14,9 @@ public class CategoryRepository : ICategoryRepository
         this.context = context;
     }
 
-    public void Add(Post post)
-    {
-        context.Posts.Add(post);
-    }
-
-    public void Add(Category category)
+    public async Task Add(Category category)
     {
         context.Categories.Add(category);
-    }
-
-    public async Task<Post?> GetById(PostId id)
-    {
-        return await context.Posts.FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<Category> GetById(CategoryId id)
@@ -41,6 +31,6 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task Remove(Category category)
     {
-        await context.Categories.Remove(category);
+        context.Categories.Remove(category);
     }
 }

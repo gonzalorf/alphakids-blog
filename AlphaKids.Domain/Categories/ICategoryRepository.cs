@@ -2,8 +2,8 @@
 
 public interface ICategoryRepository
 {
-    void Add(Category category);
-    void Remove(Category category);
+    Task Add(Category category);
+    Task Remove(Category category);
     Task<Category> GetById(CategoryId id);
     Task<Category[]> GetByIds(CategoryId[] ids);
 }

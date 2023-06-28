@@ -5,8 +5,6 @@ namespace AlphaKids.Domain.Rates;
 
 public class Rate
 {
-    public Rate() { }
-
     public Rate(RateId id, PostId postId, int value, UserId? raterId)
     {
         Id = id;

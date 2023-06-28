@@ -53,6 +53,7 @@ namespace AlphaKids.WebApi.Controllers
                     , request.Title
                     , request.Preview
                     , request.Content
+                    , request.CategoryIds
                     );
 
                 await mediator.Send(command);

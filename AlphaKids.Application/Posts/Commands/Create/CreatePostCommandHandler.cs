@@ -20,10 +20,13 @@ internal class CreatePostCommandHandler : IRequestHandler<CreatePostCommand>
 
     public async Task Handle(CreatePostCommand request, CancellationToken cancellationToken)
     {
+        var categories = await categoryRepository.GetByIds(request.CategoryIds);
+
         var post = new Post(new PostId(Guid.NewGuid())
             , request.Title
             , request.Preview
             , request.Content
+            , categories.ToArray()
             );
 
         foreach (var categoryId in request.CategoryIds)

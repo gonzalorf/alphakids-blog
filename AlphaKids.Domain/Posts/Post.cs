@@ -3,7 +3,6 @@ using AlphaKids.Domain.Comments;
 using AlphaKids.Domain.Rates;
 using AlphaKids.Domain.SeedWork;
 using AlphaKids.Domain.Users;
-using MediatR;
 
 namespace AlphaKids.Domain.Posts;
 
@@ -13,12 +12,13 @@ public class Post : Entity, IAggregateRoot
     readonly List<Category> categories = new();
     readonly List<Rate> rates = new();
 
-    public Post(PostId id, string title, string preview, string content)
+    public Post(PostId id, string title, string preview, string content, Category[] categories)
     {
         Id = id;
         Title = title;
         Preview = preview;
         Content = content;
+        foreach(var c in categories) AddCategory(c);
     }
 
     public PostId Id { get; private init; }

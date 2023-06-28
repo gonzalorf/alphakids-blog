@@ -2,8 +2,6 @@
 
 public class User
 {
-    public User() { }
-
     public User(UserId id, string name, string email, string password)
     {
         Id = id;
