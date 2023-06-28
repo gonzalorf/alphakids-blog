@@ -1,15 +1,10 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AlphaKids.Domain.Categories;
 
-namespace AlphaKids.Application.Posts.Commands.Update
-{
-    public record UpdatePostRequest(
-        string Title
-        , string Preview
-        , string Content
-        );
-}
+namespace AlphaKids.Application.Posts.Commands.Update;
+
+public record UpdatePostRequest(
+    string Title
+    , string Preview
+    , string Content
+    , CategoryId[] CategoryIds
+    );
