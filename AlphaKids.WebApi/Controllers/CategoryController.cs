@@ -1,5 +1,8 @@
 ﻿using AlphaKids.Application.Categories.Commands.Create;
+using AlphaKids.Application.Categories.Queries;
 using AlphaKids.Application.Posts.Commands.Create;
+using AlphaKids.Application.Posts.Queries;
+using AlphaKids.Domain.Posts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +18,20 @@ namespace AlphaKids.WebApi.Controllers
         public CategoryController(IMediator mediator)
         {
             this.mediator = mediator;
+        }
+
+
+        [HttpGet]
+        public async Task<IResult> Get()
+        {
+            try
+            {
+                return Results.Ok(await mediator.Send(new GetAllCategoriesQuery()));
+            }
+            catch (PostNotFoundException ex)
+            {
+                return Results.NotFound(ex.Message);
+            }
         }
 
         [HttpPost]

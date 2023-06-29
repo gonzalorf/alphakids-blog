@@ -6,4 +6,5 @@ public interface ICategoryRepository
     Task Remove(Category category);
     Task<Category> GetById(CategoryId id);
     Task<Category[]> GetByIds(CategoryId[] ids);
+    Task<Category[]> GetAll();
 }

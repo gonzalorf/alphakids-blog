@@ -19,6 +19,11 @@ public class CategoryRepository : ICategoryRepository
         context.Categories.Add(category);
     }
 
+    public async Task<Category[]> GetAll()
+    {
+        return await context.Categories.ToArrayAsync();
+    }
+
     public async Task<Category> GetById(CategoryId id)
     {
         return await context.Categories.FirstOrDefaultAsync(p => p.Id == id);
