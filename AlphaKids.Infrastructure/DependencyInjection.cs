@@ -1,5 +1,7 @@
-﻿using AlphaKids.Domain.Posts;
+﻿using AlphaKids.Domain.Categories;
+using AlphaKids.Domain.Posts;
 using AlphaKids.Domain.SeedWork;
+using AlphaKids.Domain.Users;
 using AlphaKids.Infrastructure.Database;
 using AlphaKids.Infrastructure.Domain;
 using AlphaKids.Infrastructure.Domain.Posts;
@@ -16,8 +18,8 @@ IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            //options.UseSqlServer(configuration.GetConnectionString("MyWorldDbConnection"));
-            options.UseInMemoryDatabase("Db");
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            //options.UseInMemoryDatabase("Db");
         });
 
         services.AddScoped<IApplicationDbContext>(option => {
@@ -25,8 +27,10 @@ IConfiguration configuration)
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        
+
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

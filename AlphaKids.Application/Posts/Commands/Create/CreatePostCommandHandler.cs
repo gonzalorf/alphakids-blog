@@ -26,7 +26,7 @@ internal class CreatePostCommandHandler : IRequestHandler<CreatePostCommand>
             , request.Title
             , request.Preview
             , request.Content
-            , categories.ToArray()
+            , categories.ToList()
             );
 
         foreach (var categoryId in request.CategoryIds)

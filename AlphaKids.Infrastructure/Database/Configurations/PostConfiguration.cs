@@ -1,4 +1,5 @@
-﻿using AlphaKids.Domain.Posts;
+﻿using AlphaKids.Domain.Categories;
+using AlphaKids.Domain.Posts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -24,7 +25,16 @@ internal class PostConfiguration : IEntityTypeConfiguration<Post>
             .WithOne()
             .HasForeignKey(o => o.PostId);
 
-        builder.HasMany(o => o.Categories)
+        builder
+            .HasMany(o => o.Categories)
             .WithMany();
+
+        //builder.Property<IReadOnlyList<Category>>("Categories")
+        //.HasField("categories")
+        //.UsePropertyAccessMode(PropertyAccessMode.Field);
+
+        //builder.Metadata
+        //.FindNavigation(nameof(Post.Categories))
+        //.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

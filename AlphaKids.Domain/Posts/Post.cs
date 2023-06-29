@@ -12,22 +12,24 @@ public class Post : Entity, IAggregateRoot
     readonly List<Category> categories = new();
     readonly List<Rate> rates = new();
 
-    public Post(PostId id, string title, string preview, string content, Category[] categories)
+    private Post() { }
+
+    public Post(PostId id, string title, string preview, string content, IReadOnlyCollection<Category> categories)
     {
         Id = id;
         Title = title;
         Preview = preview;
         Content = content;
-        foreach(var c in categories) AddCategory(c);
+        foreach (var c in categories) AddCategory(c);
     }
 
     public PostId Id { get; private init; }
     public string Title { get; private set; }
     public string Preview { get; private set; }
     public string Content { get; private set; }
-    public IReadOnlyList<Comment> Comments => comments;
-    public IReadOnlyList<Category> Categories => categories;
-    public IReadOnlyList<Rate> Rates => rates;
+    public IReadOnlyCollection<Comment> Comments => comments.AsReadOnly();
+    public IReadOnlyCollection<Category> Categories => categories.AsReadOnly();
+    public IReadOnlyCollection<Rate> Rates => rates.AsReadOnly();
 
     public void Update(string title, string preview, string content, Category[] categories)
     {

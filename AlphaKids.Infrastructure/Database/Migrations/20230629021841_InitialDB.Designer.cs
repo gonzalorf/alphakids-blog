@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlphaKids.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230626034112_InitialDB")]
+    [Migration("20230629021841_InitialDB")]
     partial class InitialDB
     {
         /// <inheritdoc />
@@ -36,7 +36,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("AlphaKids.Domain.Comments.Comment", b =>
@@ -44,7 +44,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AuthorId")
+                    b.Property<Guid?>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
@@ -82,7 +82,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("AlphaKids.Domain.Rates.Rate", b =>
@@ -93,7 +93,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                     b.Property<Guid>("PostId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("RaterId")
+                    b.Property<Guid?>("RaterId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Value")
@@ -127,7 +127,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("CategoryPost", b =>
@@ -149,9 +149,7 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                 {
                     b.HasOne("AlphaKids.Domain.Users.User", null)
                         .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
 
                     b.HasOne("AlphaKids.Domain.Posts.Post", null)
                         .WithMany("Comments")
@@ -168,13 +166,9 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AlphaKids.Domain.Users.User", "Rater")
+                    b.HasOne("AlphaKids.Domain.Users.User", null)
                         .WithMany()
-                        .HasForeignKey("RaterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rater");
+                        .HasForeignKey("RaterId");
                 });
 
             modelBuilder.Entity("CategoryPost", b =>
