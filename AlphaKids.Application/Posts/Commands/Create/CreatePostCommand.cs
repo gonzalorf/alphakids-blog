@@ -5,8 +5,7 @@ using MediatR;
 namespace AlphaKids.Application.Posts.Commands.Create;
 
 public record CreatePostCommand(
-    PostId PostId
-    , string Title
+    string Title
     , string Preview
     , string Content
     , CategoryId[] CategoryIds
