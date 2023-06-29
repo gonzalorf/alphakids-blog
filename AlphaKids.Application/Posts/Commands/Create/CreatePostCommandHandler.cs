@@ -29,12 +29,6 @@ internal class CreatePostCommandHandler : IRequestHandler<CreatePostCommand>
             , categories.ToList()
             );
 
-        foreach (var categoryId in request.CategoryIds)
-        {
-            var category = await categoryRepository.GetById(categoryId);
-            post.AddCategory(category);
-        }
-
         postRepository.Add(post);
 
         await unitOfWork.CommitAsync(cancellationToken);
