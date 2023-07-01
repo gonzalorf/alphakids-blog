@@ -20,12 +20,7 @@ internal class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
 
     public async Task Handle(UpdatePostCommand request, CancellationToken cancellationToken)
     {
-        var post = await postRepository.GetById(request.PostId);
-
-        if (post == null)
-        {
-            throw new PostNotFoundException(request.PostId);
-        }
+        var post = await postRepository.GetById(request.PostId) ?? throw new PostNotFoundException(request.PostId);
 
         var categories = await categoryRepository.GetByIds(request.CategoryIds);
 

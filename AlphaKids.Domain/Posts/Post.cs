@@ -44,13 +44,8 @@ public class Post : Entity, IAggregateRoot
         foreach (var category in categoriesToRemove) RemoveCategory(category);
     }
 
-    public void AddRate(User? author, int value)
+    public void AddRate(User? author, Rate rate)
     {
-        var rate = new Rate(
-            new RateId(Guid.NewGuid())
-            , value
-            , author);
-
         rates.Add(rate);
     }
 

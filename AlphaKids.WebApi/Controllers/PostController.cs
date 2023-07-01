@@ -1,4 +1,6 @@
-﻿using AlphaKids.Application.Posts.Commands.Create;
+﻿using AlphaKids.Application.Posts.Commands.AddComment;
+using AlphaKids.Application.Posts.Commands.AddRate;
+using AlphaKids.Application.Posts.Commands.Create;
 using AlphaKids.Application.Posts.Commands.Remove;
 using AlphaKids.Application.Posts.Commands.Update;
 using AlphaKids.Application.Posts.Queries;
@@ -79,6 +81,22 @@ namespace AlphaKids.WebApi.Controllers
             {
                 return Results.NotFound(ex.Message);
             }            
+        }
+
+        [HttpPost, Route("RatePost")]
+        public async Task<IResult> RatePost([FromBody] AddRateCommand command)
+        {
+            await mediator.Send(command);
+
+            return Results.Ok();
+        }
+
+        [HttpPost, Route("CommentPost")]
+        public async Task<IResult> CommentPost([FromBody] AddCommentCommand command)
+        {
+            await mediator.Send(command);
+
+            return Results.Ok();
         }
     }
 }
