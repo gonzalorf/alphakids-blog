@@ -1,6 +1,5 @@
 ﻿using AlphaKids.Application.Categories.Commands.Create;
 using AlphaKids.Domain.Categories;
-using AlphaKids.Domain.Posts;
 using AlphaKids.Domain.SeedWork;
 using MediatR;
 

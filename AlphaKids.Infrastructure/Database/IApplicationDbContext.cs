@@ -8,7 +8,7 @@ namespace AlphaKids.Infrastructure.Database;
 public interface IApplicationDbContext
 {
     DbSet<Post> Posts { get; set; }
-    
+
     DbSet<Category> Categories { get; set; }
 
     DbSet<User> Users { get; set; }

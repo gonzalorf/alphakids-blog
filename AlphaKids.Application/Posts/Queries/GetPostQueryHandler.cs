@@ -16,7 +16,7 @@ internal class GetPostQueryHandler : IRequestHandler<GetPostQuery, PostDto>
     public async Task<PostDto> Handle(GetPostQuery request, CancellationToken cancellationToken)
     {
         var post = await postRepository.GetById(request.PostId) ?? throw new PostNotFoundException(request.PostId);
-        
+
         return new PostDto(
             post.Id.Value
             , post.Title

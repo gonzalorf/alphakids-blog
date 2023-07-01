@@ -23,7 +23,7 @@ internal class GetCategoryQueryHandler : IRequestHandler<GetAllCategoriesQuery, 
         {
             categoryDtos.Add(new CategoryDto(category.Id.Value, category.Name));
         }
-        
+
         return categoryDtos.ToArray();
     }
 }

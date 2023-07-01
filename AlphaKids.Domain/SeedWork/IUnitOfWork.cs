@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-
-namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork
 {
     public interface IUnitOfWork
     {

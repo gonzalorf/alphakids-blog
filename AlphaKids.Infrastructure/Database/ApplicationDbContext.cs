@@ -1,7 +1,5 @@
 ﻿using AlphaKids.Domain.Categories;
-using AlphaKids.Domain.Comments;
 using AlphaKids.Domain.Posts;
-using AlphaKids.Domain.Rates;
 using AlphaKids.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;

@@ -25,7 +25,7 @@ internal class AddRateCommandHandler : IRequestHandler<AddRateCommand>
         var post = await postRepository.GetById(request.PostId) ?? throw new PostNotFoundException(request.PostId);
 
         User rater = null;
-        if(request.RaterId is not null)
+        if (request.RaterId is not null)
         {
             rater = await userRepository.GetById(request.RaterId);
         }

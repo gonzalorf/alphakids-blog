@@ -6,7 +6,7 @@ namespace AlphaKids.Infrastructure.Domain;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext context;
-    
+
     public UnitOfWork(
         ApplicationDbContext context)
     {

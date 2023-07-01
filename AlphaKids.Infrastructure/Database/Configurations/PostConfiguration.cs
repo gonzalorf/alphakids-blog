@@ -1,5 +1,4 @@
-﻿using AlphaKids.Domain.Categories;
-using AlphaKids.Domain.Posts;
+﻿using AlphaKids.Domain.Posts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

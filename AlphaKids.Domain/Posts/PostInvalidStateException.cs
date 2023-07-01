@@ -2,5 +2,5 @@
 
 public class PostInvalidStateException : Exception
 {
-    public PostInvalidStateException(string message) :base(message) { }
+    public PostInvalidStateException(string message) : base(message) { }
 }

@@ -80,7 +80,7 @@ namespace AlphaKids.WebApi.Controllers
             catch (PostNotFoundException ex)
             {
                 return Results.NotFound(ex.Message);
-            }            
+            }
         }
 
         [HttpPost, Route("RatePost")]

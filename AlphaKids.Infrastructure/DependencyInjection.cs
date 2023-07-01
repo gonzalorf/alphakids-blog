@@ -22,7 +22,8 @@ IConfiguration configuration)
             //options.UseInMemoryDatabase("Db");
         });
 
-        services.AddScoped<IApplicationDbContext>(option => {
+        services.AddScoped<IApplicationDbContext>(option =>
+        {
             return option.GetService<ApplicationDbContext>();
         });
 

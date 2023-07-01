@@ -1,7 +1,5 @@
 ﻿using AlphaKids.Application.Categories.Commands.Create;
 using AlphaKids.Application.Categories.Queries;
-using AlphaKids.Application.Posts.Commands.Create;
-using AlphaKids.Application.Posts.Queries;
 using AlphaKids.Domain.Posts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

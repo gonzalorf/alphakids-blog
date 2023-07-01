@@ -1,5 +1,4 @@
 ﻿using AlphaKids.Domain.Rates;
-using AlphaKids.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

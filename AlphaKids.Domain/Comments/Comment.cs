@@ -1,5 +1,4 @@
-﻿using AlphaKids.Domain.Posts;
-using AlphaKids.Domain.Users;
+﻿using AlphaKids.Domain.Users;
 
 namespace AlphaKids.Domain.Comments;
 

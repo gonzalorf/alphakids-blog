@@ -1,5 +1,4 @@
 ﻿using AlphaKids.Domain.Comments;
-using AlphaKids.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

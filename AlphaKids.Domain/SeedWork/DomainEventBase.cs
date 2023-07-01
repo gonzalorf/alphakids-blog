@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork
 {
     public class DomainEventBase : IDomainEvent
     {

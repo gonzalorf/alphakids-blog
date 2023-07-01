@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork
 {
     /// <summary>
     /// Base class for entities.
