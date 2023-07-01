@@ -5,16 +5,16 @@ namespace AlphaKids.Domain.Rates;
 
 public class Rate
 {
-    public Rate(RateId id, PostId postId, int value, UserId? raterId)
+    private Rate() { }
+
+    public Rate(RateId id, int value, User? rater)
     {
         Id = id;
-        PostId = postId;
         Value = value;
-        RaterId = raterId;
+        Rater = rater;
     }
 
     public RateId Id { get; private set; }
-    public PostId PostId { get; private set; }
     public int Value { get; private set; }
-    public UserId? RaterId { get; private set; }
+    public User? Rater { get; private set; }
 }

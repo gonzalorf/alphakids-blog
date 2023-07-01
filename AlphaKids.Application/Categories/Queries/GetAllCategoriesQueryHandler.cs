@@ -1,5 +1,5 @@
-﻿using AlphaKids.Application.Categories;
-using AlphaKids.Application.Categories.Queries;
+﻿using AlphaKids.Application.Categories.Queries;
+using AlphaKids.Application.Shared.Categories;
 using AlphaKids.Domain.Categories;
 using MediatR;
 
@@ -21,7 +21,7 @@ internal class GetCategoryQueryHandler : IRequestHandler<GetAllCategoriesQuery, 
         var categoryDtos = new List<CategoryDto>();
         foreach (var category in categories)
         {
-            categoryDtos.Add(new CategoryDto(category.Id, category.Name));
+            categoryDtos.Add(new CategoryDto(category.Id.Value, category.Name));
         }
         
         return categoryDtos.ToArray();

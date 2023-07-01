@@ -31,30 +31,25 @@ public class Post : Entity, IAggregateRoot
     public IReadOnlyCollection<Category> Categories => categories.AsReadOnly();
     public IReadOnlyCollection<Rate> Rates => rates.AsReadOnly();
 
-    public void Update(string title, string preview, string content, Category[] categories)
+    public void UpdateProperties(string title, string preview, string content, Category[] categories)
     {
         Title = title;
         Preview = preview;
         Content = content;
 
-        foreach (var category in categories)
-        {
-            if (!Categories.Contains(category)) AddCategory(category);
-        }
+        var categoriesToAdd = categories.Except(Categories).ToArray();
+        foreach (var category in categoriesToAdd) AddCategory(category);
 
-        foreach (var category in Categories)
-        {
-            if (!categories.ToList().Contains(category)) RemoveCategory(category);
-        }
+        var categoriesToRemove = Categories.Except(categories).ToArray();
+        foreach (var category in categoriesToRemove) RemoveCategory(category);
     }
 
     public void AddRate(User? author, int value)
     {
         var rate = new Rate(
             new RateId(Guid.NewGuid())
-            , Id
             , value
-            , author is not null ? author.Id : null);
+            , author);
 
         rates.Add(rate);
     }
@@ -63,9 +58,8 @@ public class Post : Entity, IAggregateRoot
     {
         var comment = new Comment(
             new CommentId(Guid.NewGuid())
-            , Id
             , content
-            , author is not null ? author.Id : null);
+            , author);
 
         comments.Add(comment);
     }

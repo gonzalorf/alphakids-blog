@@ -20,7 +20,7 @@ namespace AlphaKids.Domain.SeedWork
         /// <param name="domainEvent"></param>
         protected void AddDomainEvent(IDomainEvent domainEvent)
         {
-            _domainEvents = _domainEvents ?? new List<IDomainEvent>();
+            _domainEvents ??= new List<IDomainEvent>();
             this._domainEvents.Add(domainEvent);
         }
 

@@ -28,6 +28,8 @@ internal class CreatePostCommandHandler : IRequestHandler<CreatePostCommand>
             , request.Content
             , categories.ToList()
             );
+        
+        PostValidator.ValidatePost(post);
 
         postRepository.Add(post);
 

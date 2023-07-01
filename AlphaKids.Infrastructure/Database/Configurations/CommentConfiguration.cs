@@ -16,8 +16,8 @@ internal class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.Property(e => e.Id)
             .HasConversion(id => id.Value, value => new CommentId(value));
 
-        builder.HasOne<User>()
+        builder.HasOne(c => c.Author)
             .WithMany()
-            .HasForeignKey(o => o.AuthorId);
+            .HasForeignKey("AuthorId");
     }
 }

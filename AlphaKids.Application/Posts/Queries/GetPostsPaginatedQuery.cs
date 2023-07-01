@@ -1,9 +1,5 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AlphaKids.Application.Shared.Posts;
+using MediatR;
 
 namespace AlphaKids.Application.Posts.Queries
 {

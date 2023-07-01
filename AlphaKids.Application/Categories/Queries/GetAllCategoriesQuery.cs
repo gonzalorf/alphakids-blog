@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AlphaKids.Application.Shared.Categories;
+using MediatR;
 
 namespace AlphaKids.Application.Categories.Queries;
 

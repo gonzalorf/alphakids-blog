@@ -1,7 +1,8 @@
-﻿namespace AlphaKids.Application.Posts;
+﻿namespace AlphaKids.Application.Shared.Posts;
 
 public record PostDto(
-    string Title
+    Guid Id
+    , string Title
     , string Preview
     , string Content
     , int Rate

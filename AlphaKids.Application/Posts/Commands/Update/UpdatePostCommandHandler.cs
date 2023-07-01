@@ -29,7 +29,9 @@ internal class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
 
         var categories = await categoryRepository.GetByIds(request.CategoryIds);
 
-        post.Update(request.Title, request.Preview, request.Content, categories);        
+        post.UpdateProperties(request.Title, request.Preview, request.Content, categories);
+
+        PostValidator.ValidatePost(post);
 
         postRepository.Update(post);
 

@@ -16,8 +16,8 @@ internal class RateConfiguration : IEntityTypeConfiguration<Rate>
         builder.Property(e => e.Id)
             .HasConversion(id => id.Value, value => new RateId(value));
 
-        builder.HasOne<User>()
+        builder.HasOne(c => c.Rater)
             .WithMany()
-            .HasForeignKey(o => o.RaterId);
+            .HasForeignKey("RaterId");
     }
 }

@@ -1,4 +1,5 @@
-﻿using AlphaKids.Domain.Posts;
+﻿using AlphaKids.Application.Shared.Posts;
+using AlphaKids.Domain.Posts;
 using MediatR;
 
 namespace AlphaKids.Application.Posts.Queries;
@@ -14,15 +15,11 @@ internal class GetPostQueryHandler : IRequestHandler<GetPostQuery, PostDto>
 
     public async Task<PostDto> Handle(GetPostQuery request, CancellationToken cancellationToken)
     {
-        var post = await postRepository.GetById(request.PostId);
-
-        if (post == null)
-        {
-            throw new PostNotFoundException(request.PostId);
-        }
-
+        var post = await postRepository.GetById(request.PostId) ?? throw new PostNotFoundException(request.PostId);
+        
         return new PostDto(
-            post.Title
+            post.Id.Value
+            , post.Title
             , post.Preview
             , post.Content
             , 0

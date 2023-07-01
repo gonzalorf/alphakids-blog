@@ -139,12 +139,12 @@ namespace AlphaKids.Infrastructure.Database.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("CategoryPost", (string)null);
+                    b.ToTable("CategoryPost");
                 });
 
             modelBuilder.Entity("AlphaKids.Domain.Comments.Comment", b =>
                 {
-                    b.HasOne("AlphaKids.Domain.Users.User", null)
+                    b.HasOne("AlphaKids.Domain.Users.User", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
 
@@ -153,6 +153,8 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("AlphaKids.Domain.Rates.Rate", b =>
@@ -163,9 +165,11 @@ namespace AlphaKids.Infrastructure.Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AlphaKids.Domain.Users.User", null)
+                    b.HasOne("AlphaKids.Domain.Users.User", "Rater")
                         .WithMany()
                         .HasForeignKey("RaterId");
+
+                    b.Navigation("Rater");
                 });
 
             modelBuilder.Entity("CategoryPost", b =>

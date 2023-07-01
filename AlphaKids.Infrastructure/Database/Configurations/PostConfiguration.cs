@@ -19,22 +19,17 @@ internal class PostConfiguration : IEntityTypeConfiguration<Post>
 
         builder.HasMany(o => o.Comments)
             .WithOne()
-            .HasForeignKey(o => o.PostId);
+            .HasForeignKey("PostId")
+            .IsRequired();
 
         builder.HasMany(o => o.Rates)
             .WithOne()
-            .HasForeignKey(o => o.PostId);
+            .HasForeignKey("PostId")
+            .IsRequired();
 
         builder
             .HasMany(o => o.Categories)
             .WithMany();
 
-        //builder.Property<IReadOnlyList<Category>>("Categories")
-        //.HasField("categories")
-        //.UsePropertyAccessMode(PropertyAccessMode.Field);
-
-        //builder.Metadata
-        //.FindNavigation(nameof(Post.Categories))
-        //.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }
