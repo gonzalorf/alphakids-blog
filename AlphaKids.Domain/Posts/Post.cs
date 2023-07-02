@@ -1,8 +1,7 @@
 ﻿using AlphaKids.Domain.Categories;
-using AlphaKids.Domain.Comments;
-using AlphaKids.Domain.Rates;
 using AlphaKids.Domain.SeedWork;
 using AlphaKids.Domain.Users;
+using MediatR;
 
 namespace AlphaKids.Domain.Posts;
 
@@ -44,8 +43,16 @@ public class Post : Entity, IAggregateRoot
         foreach (var category in categoriesToRemove) RemoveCategory(category);
     }
 
-    public void AddRate(User? author, Rate rate)
+    public void AddRate(User? author, int value)
     {
+
+        var rate = new Rate(
+            new RateId(Guid.NewGuid())
+            , value
+            , author);
+
+        RateValidator.ValidateRate(rate);
+
         rates.Add(rate);
     }
 

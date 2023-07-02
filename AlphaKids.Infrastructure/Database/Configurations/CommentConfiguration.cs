@@ -1,4 +1,4 @@
-﻿using AlphaKids.Domain.Comments;
+﻿using AlphaKids.Domain.Posts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

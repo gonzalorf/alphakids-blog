@@ -1,6 +1,5 @@
 ﻿using AlphaKids.Application.Posts.Commands.AddRate;
 using AlphaKids.Domain.Posts;
-using AlphaKids.Domain.Rates;
 using AlphaKids.Domain.SeedWork;
 using AlphaKids.Domain.Users;
 using MediatR;
@@ -30,14 +29,7 @@ internal class AddRateCommandHandler : IRequestHandler<AddRateCommand>
             rater = await userRepository.GetById(request.RaterId);
         }
 
-        var rate = new Rate(
-            new RateId(Guid.NewGuid())
-            , request.Value
-            , rater);
-
-        RateValidator.ValidateRate(rate);
-
-        post.AddRate(rater, rate);
+        post.AddRate(rater, request.Value);
 
         await unitOfWork.CommitAsync(cancellationToken);
     }

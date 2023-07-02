@@ -6,6 +6,7 @@ using AlphaKids.Application.Posts.Commands.Update;
 using AlphaKids.Application.Posts.Queries;
 using AlphaKids.Domain.Posts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,7 +38,7 @@ namespace AlphaKids.WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IResult> Post([FromBody] CreatePostCommand command)
         {
             await mediator.Send(command);
