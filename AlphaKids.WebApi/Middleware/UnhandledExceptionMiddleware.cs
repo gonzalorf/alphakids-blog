@@ -21,13 +21,28 @@ public class UnhandledExceptionMiddleware : IMiddleware
             //logger.LogError(ex, ex.Message);
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            ProblemDetails problem = new()
+            ProblemDetails problem;
+
+            if (ex is ApplicationException)
             {
-                Status = (int)HttpStatusCode.InternalServerError
-                , Type = "Server exception"
-                , Title = "Server exception"
-                , Detail = "Internal error"
-            };
+                problem = new()
+                {
+                    Status = (int)HttpStatusCode.BadRequest
+                    , Type = "Application exception"
+                    , Title = "Application exception"
+                    , Detail = ex.Message
+                };
+            }
+            else
+            {
+                problem = new()
+                {
+                    Status = (int)HttpStatusCode.InternalServerError
+                    , Type = "Server exception"
+                    , Title = "Server exception"
+                    , Detail = "Internal error"
+                };
+            }
 
             string serializedProblem = JsonSerializer.Serialize(problem);
 
