@@ -2,6 +2,7 @@ using AlphaKids.Application;
 using AlphaKids.Application.Common.Services;
 using AlphaKids.Infrastructure;
 using AlphaKids.Infrastructure.Security;
+using AlphaKids.WebApi.Middleware;
 using AlphaKids.WebApi.OptionsConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -21,6 +22,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<UnhandledExceptionMiddleware>();
 
 builder.Services.ConfigureOptions<JwtOptionsConfig>();
 builder.Services.ConfigureOptions<JwtBearerOptionsConfig>();
@@ -45,6 +48,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<UnhandledExceptionMiddleware>();
 
 app.MapControllers();
 

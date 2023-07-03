@@ -5,6 +5,7 @@ namespace AlphaKids.WebApi.OptionsConfig
 {
     public class JwtOptionsConfig : IConfigureOptions<JwtOptions>
     {
+        private const string JwtSectionName = "Jwt";
         IConfiguration configuration;
 
         public JwtOptionsConfig(IConfiguration configuration)
@@ -14,7 +15,7 @@ namespace AlphaKids.WebApi.OptionsConfig
 
         public void Configure(JwtOptions options)
         {
-            configuration.GetSection("Jwt").Bind(options);
+            configuration.GetSection(JwtSectionName).Bind(options);
         }
     }
 }
