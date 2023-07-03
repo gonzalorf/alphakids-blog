@@ -1,7 +1,6 @@
-﻿namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        Task<int> CommitAsync(CancellationToken cancellationToken = default(CancellationToken));
-    }
+    Task<int> CommitAsync(CancellationToken cancellationToken = default(CancellationToken));
 }

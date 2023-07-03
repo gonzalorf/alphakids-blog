@@ -1,7 +1,6 @@
-﻿namespace AlphaKids.Domain.SeedWork
-{
-    public interface IAggregateRoot
-    {
+﻿namespace AlphaKids.Domain.SeedWork;
 
-    }
+public interface IAggregateRoot
+{
+
 }

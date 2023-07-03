@@ -1,7 +1,6 @@
 ﻿using AlphaKids.Domain.Categories;
 using AlphaKids.Domain.SeedWork;
 using AlphaKids.Domain.Users;
-using MediatR;
 
 namespace AlphaKids.Domain.Posts;
 

@@ -1,6 +1,5 @@
-﻿namespace AlphaKids.Application.Posts.Queries
+﻿namespace AlphaKids.Application.Posts.Queries;
+
+internal class GetPostsPaginatedQueryHandler
 {
-    internal class GetPostsPaginatedQueryHandler
-    {
-    }
 }

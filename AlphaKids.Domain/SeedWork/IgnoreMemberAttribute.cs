@@ -1,7 +1,6 @@
-﻿namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork;
+
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+public sealed class IgnoreMemberAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public sealed class IgnoreMemberAttribute : Attribute
-    {
-    }
 }

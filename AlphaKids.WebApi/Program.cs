@@ -6,7 +6,6 @@ using AlphaKids.WebApi.Middleware;
 using AlphaKids.WebApi.OptionsConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
-using System.Security.Permissions;
 
 var builder = WebApplication.CreateBuilder(args);
 

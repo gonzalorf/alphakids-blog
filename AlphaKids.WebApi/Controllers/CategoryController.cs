@@ -6,38 +6,37 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace AlphaKids.WebApi.Controllers
+namespace AlphaKids.WebApi.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class CategoryController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CategoryController : ControllerBase
+    private readonly IMediator mediator;
+    public CategoryController(IMediator mediator)
     {
-        private readonly IMediator mediator;
-        public CategoryController(IMediator mediator)
+        this.mediator = mediator;
+    }
+
+
+    [HttpGet]
+    public async Task<IResult> Get()
+    {
+        try
         {
-            this.mediator = mediator;
+            return Results.Ok(await mediator.Send(new GetAllCategoriesQuery()));
         }
-
-
-        [HttpGet]
-        public async Task<IResult> Get()
+        catch (PostNotFoundException ex)
         {
-            try
-            {
-                return Results.Ok(await mediator.Send(new GetAllCategoriesQuery()));
-            }
-            catch (PostNotFoundException ex)
-            {
-                return Results.NotFound(ex.Message);
-            }
+            return Results.NotFound(ex.Message);
         }
+    }
 
-        [HttpPost]
-        public async Task<IResult> Post([FromBody] CreateCategoryCommand command)
-        {
-            await mediator.Send(command);
+    [HttpPost]
+    public async Task<IResult> Post([FromBody] CreateCategoryCommand command)
+    {
+        await mediator.Send(command);
 
-            return Results.Ok();
-        }
+        return Results.Ok();
     }
 }

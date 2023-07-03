@@ -17,8 +17,8 @@ internal class GetCategoryQueryHandler : IRequestHandler<GetAllCategoriesQuery, 
     public async Task<CategoryDto[]> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
     {
         var categories = await categoryRepository.GetAll();
-
         var categoryDtos = new List<CategoryDto>();
+
         foreach (var category in categories)
         {
             categoryDtos.Add(new CategoryDto(category.Id.Value, category.Name));

@@ -1,17 +1,16 @@
-﻿namespace AlphaKids.Domain.SeedWork
+﻿namespace AlphaKids.Domain.SeedWork;
+
+public record TypedIdValueBase : IEquatable<TypedIdValueBase>
 {
-    public record TypedIdValueBase : IEquatable<TypedIdValueBase>
+    public Guid Value { get; }
+
+    protected TypedIdValueBase(Guid value)
     {
-        public Guid Value { get; }
+        Value = value;
+    }
 
-        protected TypedIdValueBase(Guid value)
-        {
-            Value = value;
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
-        }
+    public override int GetHashCode()
+    {
+        return Value.GetHashCode();
     }
 }

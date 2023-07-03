@@ -23,7 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{6B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EC9E1902-7E65-42BB-9837-05FE5761BF4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaKids.Application.Shared", "AlphaKids.Application.Shared\AlphaKids.Application.Shared.csproj", "{C7227A5D-C9A4-4CA9-B250-8D504B24CB0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlphaKids.Application.Shared", "AlphaKids.Application.Shared\AlphaKids.Application.Shared.csproj", "{C7227A5D-C9A4-4CA9-B250-8D504B24CB0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{5831DB42-4D1E-42A6-89B2-539C5AC4AC51}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

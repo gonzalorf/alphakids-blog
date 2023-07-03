@@ -29,7 +29,7 @@ public sealed class JwtProvider : IJwtProvider
             new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(jwtOptions.SecurityKey)),
             SecurityAlgorithms.HmacSha256
-            );  
+            );
 
         var jwt = new JwtSecurityToken(
             jwtOptions.Issuer

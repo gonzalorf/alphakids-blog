@@ -28,9 +28,12 @@ public class UnhandledExceptionMiddleware : IMiddleware
                 problem = new()
                 {
                     Status = (int)HttpStatusCode.BadRequest
-                    , Type = "Application exception"
-                    , Title = "Application exception"
-                    , Detail = ex.Message
+                    ,
+                    Type = "Application exception"
+                    ,
+                    Title = "Application exception"
+                    ,
+                    Detail = ex.Message
                 };
             }
             else
@@ -38,13 +41,16 @@ public class UnhandledExceptionMiddleware : IMiddleware
                 problem = new()
                 {
                     Status = (int)HttpStatusCode.InternalServerError
-                    , Type = "Server exception"
-                    , Title = "Server exception"
-                    , Detail = "Internal error"
+                    ,
+                    Type = "Server exception"
+                    ,
+                    Title = "Server exception"
+                    ,
+                    Detail = "Internal error"
                 };
             }
 
-            string serializedProblem = JsonSerializer.Serialize(problem);
+            var serializedProblem = JsonSerializer.Serialize(problem);
 
             context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(serializedProblem);
