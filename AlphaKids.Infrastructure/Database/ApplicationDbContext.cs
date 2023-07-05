@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        _ = modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 }
 
@@ -27,7 +27,7 @@ public class ApplicationContextFactory : IDesignTimeDbContextFactory<Application
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        optionsBuilder.UseSqlServer("Data Source=localhost\\SQLExpress;Initial Catalog=Alphakids;persist security info=True;Integrated Security=SSPI;Encrypt=false;");
+        _ = optionsBuilder.UseSqlServer("Data Source=localhost\\SQLExpress;Initial Catalog=Alphakids;persist security info=True;Integrated Security=SSPI;Encrypt=false;");
 
         return new ApplicationDbContext(optionsBuilder.Options);
     }

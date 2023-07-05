@@ -22,7 +22,7 @@ internal class AddCommentCommandHandler : IRequestHandler<AddCommentCommand>
     {
         var post = await postRepository.GetById(request.PostId);
 
-        User rater = null;
+        User? rater = null;
         if (request.AuthorId is not null)
         {
             rater = await userRepository.GetById(request.AuthorId);
@@ -30,6 +30,6 @@ internal class AddCommentCommandHandler : IRequestHandler<AddCommentCommand>
 
         post.AddComment(rater, request.Content);
 
-        await unitOfWork.CommitAsync(cancellationToken);
+        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

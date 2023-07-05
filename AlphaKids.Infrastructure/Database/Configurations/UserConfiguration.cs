@@ -8,11 +8,11 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.ToTable("Users");
+        _ = builder.ToTable("Users");
 
-        builder.HasKey(x => x.Id);
+        _ = builder.HasKey(x => x.Id);
 
-        builder.Property(e => e.Id)
+        _ = builder.Property(e => e.Id)
                     .HasConversion(id => id.Value, value => new UserId(value));
     }
 }

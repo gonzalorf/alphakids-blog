@@ -2,7 +2,7 @@
 using AlphaKids.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlphaKids.Infrastructure.Domain.Posts;
+namespace AlphaKids.Infrastructure.Domain.Categories;
 
 public class CategoryRepository : ICategoryRepository
 {
@@ -13,9 +13,9 @@ public class CategoryRepository : ICategoryRepository
         this.context = context;
     }
 
-    public async Task Add(Category category)
+    public void Add(Category category)
     {
-        context.Categories.Add(category);
+        _ = context.Categories.Add(category);
     }
 
     public async Task<Category[]> GetAll()
@@ -33,8 +33,18 @@ public class CategoryRepository : ICategoryRepository
         return await context.Categories.Where(p => ids.Contains(p.Id)).ToArrayAsync();
     }
 
-    public async Task Remove(Category category)
+    public void Remove(Category category)
     {
-        context.Categories.Remove(category);
+        _ = context.Categories.Remove(category);
+    }
+
+    Task ICategoryRepository.Add(Category category)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task ICategoryRepository.Remove(Category category)
+    {
+        throw new NotImplementedException();
     }
 }

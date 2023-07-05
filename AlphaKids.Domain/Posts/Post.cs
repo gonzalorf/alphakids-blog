@@ -6,9 +6,9 @@ namespace AlphaKids.Domain.Posts;
 
 public class Post : Entity, IAggregateRoot
 {
-    readonly List<Comment> comments = new();
-    readonly List<Category> categories = new();
-    readonly List<Rate> rates = new();
+    private readonly List<Comment> comments = new();
+    private readonly List<Category> categories = new();
+    private readonly List<Rate> rates = new();
 
     private Post() { }
 
@@ -18,7 +18,10 @@ public class Post : Entity, IAggregateRoot
         Title = title;
         Preview = preview;
         Content = content;
-        foreach (var c in categories) AddCategory(c);
+        foreach (var c in categories)
+        {
+            AddCategory(c);
+        }
     }
 
     public PostId Id { get; private init; }
@@ -36,10 +39,16 @@ public class Post : Entity, IAggregateRoot
         Content = content;
 
         var categoriesToAdd = categories.Except(Categories).ToArray();
-        foreach (var category in categoriesToAdd) AddCategory(category);
+        foreach (var category in categoriesToAdd)
+        {
+            AddCategory(category);
+        }
 
         var categoriesToRemove = Categories.Except(categories).ToArray();
-        foreach (var category in categoriesToRemove) RemoveCategory(category);
+        foreach (var category in categoriesToRemove)
+        {
+            RemoveCategory(category);
+        }
     }
 
     public void AddRate(User? author, int value)
@@ -72,6 +81,6 @@ public class Post : Entity, IAggregateRoot
 
     public void RemoveCategory(Category category)
     {
-        categories.Remove(category);
+        _ = categories.Remove(category);
     }
 }

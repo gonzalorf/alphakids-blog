@@ -15,7 +15,7 @@ public class PostRepository : IPostRepository
 
     public void Add(Post post)
     {
-        context.Posts.Add(post);
+        _ = context.Posts.Add(post);
     }
 
     public async Task<Post?> GetById(PostId id)

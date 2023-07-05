@@ -8,25 +8,25 @@ internal class PostConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
     {
-        builder.ToTable("Posts");
+        _ = builder.ToTable("Posts");
 
-        builder.HasKey(x => x.Id);
+        _ = builder.HasKey(x => x.Id);
 
-        builder.Property(e => e.Id).HasConversion(
+        _ = builder.Property(e => e.Id).HasConversion(
             id => id.Value
             , value => new PostId(value));
 
-        builder.HasMany(o => o.Comments)
+        _ = builder.HasMany(o => o.Comments)
             .WithOne()
             .HasForeignKey("PostId")
             .IsRequired();
 
-        builder.HasMany(o => o.Rates)
+        _ = builder.HasMany(o => o.Rates)
             .WithOne()
             .HasForeignKey("PostId")
             .IsRequired();
 
-        builder
+        _ = builder
             .HasMany(o => o.Categories)
             .WithMany();
 

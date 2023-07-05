@@ -4,7 +4,9 @@ using AlphaKids.Domain.SeedWork;
 using AlphaKids.Domain.Users;
 using AlphaKids.Infrastructure.Database;
 using AlphaKids.Infrastructure.Domain;
+using AlphaKids.Infrastructure.Domain.Categories;
 using AlphaKids.Infrastructure.Domain.Posts;
+using AlphaKids.Infrastructure.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,22 +18,22 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
 IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDbContext>(options =>
+        _ = services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            _ = options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             //options.UseInMemoryDatabase("Db");
         });
 
-        services.AddScoped<IApplicationDbContext>(option =>
+        _ = services.AddScoped<IApplicationDbContext>(option =>
         {
             return option.GetService<ApplicationDbContext>();
         });
 
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        _ = services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        services.AddScoped<IPostRepository, PostRepository>();
-        services.AddScoped<ICategoryRepository, CategoryRepository>();
-        services.AddScoped<IUserRepository, UserRepository>();
+        _ = services.AddScoped<IPostRepository, PostRepository>();
+        _ = services.AddScoped<ICategoryRepository, CategoryRepository>();
+        _ = services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

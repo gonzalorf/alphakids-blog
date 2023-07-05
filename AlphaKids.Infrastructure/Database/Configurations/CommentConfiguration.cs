@@ -8,14 +8,14 @@ internal class CommentConfiguration : IEntityTypeConfiguration<Comment>
 {
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
-        builder.ToTable("Comments");
+        _ = builder.ToTable("Comments");
 
-        builder.HasKey(x => x.Id);
+        _ = builder.HasKey(x => x.Id);
 
-        builder.Property(e => e.Id)
+        _ = builder.Property(e => e.Id)
             .HasConversion(id => id.Value, value => new CommentId(value));
 
-        builder.HasOne(c => c.Author)
+        _ = builder.HasOne(c => c.Author)
             .WithMany()
             .HasForeignKey("AuthorId");
     }

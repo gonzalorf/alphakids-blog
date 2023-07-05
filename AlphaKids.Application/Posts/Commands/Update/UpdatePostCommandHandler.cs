@@ -30,6 +30,6 @@ internal class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
 
         postRepository.Update(post);
 
-        await unitOfWork.CommitAsync(cancellationToken);
+        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

@@ -2,7 +2,7 @@
 using AlphaKids.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlphaKids.Infrastructure.Domain.Posts;
+namespace AlphaKids.Infrastructure.Domain.Users;
 
 public class UserRepository : IUserRepository
 {
@@ -15,7 +15,7 @@ public class UserRepository : IUserRepository
 
     public void Add(User user)
     {
-        context.Users.Add(user);
+        _ = context.Users.Add(user);
     }
 
     public async Task<User?> GetByEmail(string email)

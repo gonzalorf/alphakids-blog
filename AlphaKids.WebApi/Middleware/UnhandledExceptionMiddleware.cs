@@ -6,9 +6,12 @@ namespace AlphaKids.WebApi.Middleware;
 
 public class UnhandledExceptionMiddleware : IMiddleware
 {
-    readonly ILogger<UnhandledExceptionMiddleware> logger;
+    private readonly ILogger<UnhandledExceptionMiddleware> logger;
 
-    public UnhandledExceptionMiddleware(ILogger<UnhandledExceptionMiddleware> logger) => this.logger = logger;
+    public UnhandledExceptionMiddleware(ILogger<UnhandledExceptionMiddleware> logger)
+    {
+        this.logger = logger;
+    }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
@@ -21,11 +24,8 @@ public class UnhandledExceptionMiddleware : IMiddleware
             //logger.LogError(ex, ex.Message);
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            ProblemDetails problem;
-
-            if (ex is ApplicationException)
-            {
-                problem = new()
+            var problem = ex is ApplicationException
+                ? new()
                 {
                     Status = (int)HttpStatusCode.BadRequest
                     ,
@@ -34,11 +34,8 @@ public class UnhandledExceptionMiddleware : IMiddleware
                     Title = "Application exception"
                     ,
                     Detail = ex.Message
-                };
-            }
-            else
-            {
-                problem = new()
+                }
+                : (ProblemDetails)new()
                 {
                     Status = (int)HttpStatusCode.InternalServerError
                     ,
@@ -48,8 +45,6 @@ public class UnhandledExceptionMiddleware : IMiddleware
                     ,
                     Detail = "Internal error"
                 };
-            }
-
             var serializedProblem = JsonSerializer.Serialize(problem);
 
             context.Response.ContentType = "application/json";

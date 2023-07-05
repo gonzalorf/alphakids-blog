@@ -4,20 +4,12 @@ namespace AlphaKids.Domain.SeedWork;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
-    private List<PropertyInfo> _properties;
-    private List<FieldInfo> _fields;
+    private List<PropertyInfo>? _properties;
+    private List<FieldInfo>? _fields;
 
     public static bool operator ==(ValueObject obj1, ValueObject obj2)
     {
-        if (object.Equals(obj1, null))
-        {
-            if (object.Equals(obj2, null))
-            {
-                return true;
-            }
-            return false;
-        }
-        return obj1.Equals(obj2);
+        return object.Equals(obj1, null) ? object.Equals(obj2, null) : obj1.Equals(obj2);
     }
 
     public static bool operator !=(ValueObject obj1, ValueObject obj2)
@@ -32,9 +24,8 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     public override bool Equals(object obj)
     {
-        if (obj == null || GetType() != obj.GetType()) return false;
-
-        return GetProperties().All(p => PropertiesAreEqual(obj, p))
+        return obj != null && GetType() == obj.GetType()
+&& GetProperties().All(p => PropertiesAreEqual(obj, p))
             && GetFields().All(f => FieldsAreEqual(obj, f));
     }
 
@@ -50,37 +41,28 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     private IEnumerable<PropertyInfo> GetProperties()
     {
-        if (this._properties == null)
-        {
-            this._properties = GetType()
+        _properties ??= GetType()
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .Where(p => p.GetCustomAttribute(typeof(IgnoreMemberAttribute)) == null)
                 .ToList();
 
-            // Not available in Core
-            // !Attribute.IsDefined(p, typeof(IgnoreMemberAttribute))).ToList();
-        }
-
-        return this._properties;
+        return _properties;
     }
 
     private IEnumerable<FieldInfo> GetFields()
     {
-        if (this._fields == null)
-        {
-            this._fields = GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+        _fields ??= GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 .Where(p => p.GetCustomAttribute(typeof(IgnoreMemberAttribute)) == null)
                 .ToList();
-        }
 
-        return this._fields;
+        return _fields;
     }
 
     public override int GetHashCode()
     {
         unchecked   //allow overflow
         {
-            int hash = 17;
+            var hash = 17;
             foreach (var prop in GetProperties())
             {
                 var value = prop.GetValue(this, null);
@@ -101,7 +83,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
     {
         var currentHash = value?.GetHashCode() ?? 0;
 
-        return seed * 23 + currentHash;
+        return (seed * 23) + currentHash;
     }
 
     protected static void CheckRule(IBusinessRule rule)

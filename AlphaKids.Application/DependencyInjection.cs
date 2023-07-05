@@ -9,9 +9,9 @@ public static class DependencyInjection
     {
         var assembly = typeof(DependencyInjection).Assembly;
 
-        services.AddMediatR(configuration => { configuration.RegisterServicesFromAssemblies(assembly); });
+        _ = services.AddMediatR(configuration => { _ = configuration.RegisterServicesFromAssemblies(assembly); });
 
-        services.AddValidatorsFromAssembly(assembly);
+        _ = services.AddValidatorsFromAssembly(assembly);
 
         return services;
     }

@@ -1,9 +1,8 @@
-﻿using AlphaKids.Application.Categories.Commands.Create;
-using AlphaKids.Domain.Categories;
+﻿using AlphaKids.Domain.Categories;
 using AlphaKids.Domain.SeedWork;
 using MediatR;
 
-namespace AlphaKids.Application.Posts.Commands.Create;
+namespace AlphaKids.Application.Categories.Commands.Create;
 
 internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand>
 {
@@ -22,8 +21,8 @@ internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComm
             , request.Name
             );
 
-        categoryRepository.Add(post);
+        _ = categoryRepository.Add(post);
 
-        await unitOfWork.CommitAsync(cancellationToken);
+        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

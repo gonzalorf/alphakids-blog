@@ -8,7 +8,7 @@ namespace AlphaKids.WebApi.OptionsConfig;
 
 public class JwtBearerOptionsConfig : IConfigureNamedOptions<JwtBearerOptions>
 {
-    JwtOptions jwtOptions;
+    private readonly JwtOptions jwtOptions;
 
     public JwtBearerOptionsConfig(IOptions<JwtOptions> jwtOptions)
     {

@@ -26,6 +26,6 @@ internal class RemovePostCommandHandler : IRequestHandler<RemovePostCommand>
 
         postRepository.Remove(post);
 
-        await unitOfWork.CommitAsync(cancellationToken);
+        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

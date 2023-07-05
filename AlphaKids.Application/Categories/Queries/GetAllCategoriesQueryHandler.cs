@@ -1,9 +1,8 @@
-﻿using AlphaKids.Application.Categories.Queries;
-using AlphaKids.Application.Shared.Categories;
+﻿using AlphaKids.Application.Shared.Categories;
 using AlphaKids.Domain.Categories;
 using MediatR;
 
-namespace AlphaKids.Application.Categorys.Queries;
+namespace AlphaKids.Application.Categories.Queries;
 
 internal class GetCategoryQueryHandler : IRequestHandler<GetAllCategoriesQuery, CategoryDto[]>
 {

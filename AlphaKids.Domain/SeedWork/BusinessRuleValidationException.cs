@@ -9,7 +9,7 @@ public class BusinessRuleValidationException : Exception
     public BusinessRuleValidationException(IBusinessRule brokenRule) : base(brokenRule.Message)
     {
         BrokenRule = brokenRule;
-        this.Details = brokenRule.Message;
+        Details = brokenRule.Message;
     }
 
     public override string ToString()
