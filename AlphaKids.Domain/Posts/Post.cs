@@ -10,7 +10,8 @@ public class Post : Entity, IAggregateRoot
     private readonly List<Category> categories = new();
     private readonly List<Rate> rates = new();
 
-    private Post() { }
+    private Post()
+    { }
 
     public Post(PostId id, string title, string preview, string content, IReadOnlyCollection<Category> categories)
     {
@@ -53,7 +54,6 @@ public class Post : Entity, IAggregateRoot
 
     public void AddRate(User? author, int value)
     {
-
         var rate = new Rate(
             new RateId(Guid.NewGuid())
             , value

@@ -21,7 +21,8 @@ public class UnhandledExceptionMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            //logger.LogError(ex, ex.Message);
+            logger.LogError(ex, ex.Message);
+
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var problem = ex is ApplicationException
