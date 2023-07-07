@@ -1,5 +1,4 @@
-﻿using AlphaKids.Application.Shared.Posts;
-using AlphaKids.Domain.Posts;
+﻿using AlphaKids.Domain.Posts;
 using MediatR;
 
 namespace AlphaKids.Application.Posts.Queries;
