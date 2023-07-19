@@ -4,12 +4,9 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvents">
-		<Exec Command="npm run buildcss" />
-	</Target>
-	
   <ItemGroup>
     <Compile Remove="wwwroot\fonts\**" />
     <Compile Remove="wwwroot\images\**" />
@@ -29,5 +26,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.7" PrivateAssets="all" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npm run buildcss" />
+  </Target>
 
 </Project>
