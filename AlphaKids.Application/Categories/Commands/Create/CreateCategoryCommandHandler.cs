@@ -19,6 +19,6 @@ internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComm
             , request.Name
             );
 
-        _ = categoryRepository.Add(post);
+        categoryRepository.Add(post);
     }
 }

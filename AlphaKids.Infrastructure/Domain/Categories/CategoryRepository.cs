@@ -18,6 +18,11 @@ public class CategoryRepository : ICategoryRepository
         _ = context.Categories.Add(category);
     }
 
+    public void Remove(Category category)
+    {
+        _ = context.Categories.Remove(category);
+    }
+
     public async Task<Category[]> GetAll()
     {
         return await context.Categories.ToArrayAsync();
@@ -31,20 +36,5 @@ public class CategoryRepository : ICategoryRepository
     public async Task<Category[]> GetByIds(CategoryId[] ids)
     {
         return await context.Categories.Where(p => ids.Contains(p.Id)).ToArrayAsync();
-    }
-
-    public void Remove(Category category)
-    {
-        _ = context.Categories.Remove(category);
-    }
-
-    Task ICategoryRepository.Add(Category category)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task ICategoryRepository.Remove(Category category)
-    {
-        throw new NotImplementedException();
     }
 }
