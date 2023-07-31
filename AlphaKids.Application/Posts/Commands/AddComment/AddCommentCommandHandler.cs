@@ -9,13 +9,11 @@ internal class AddCommentCommandHandler : IRequestHandler<AddCommentCommand>
 {
     private readonly IUserRepository userRepository;
     private readonly IPostRepository postRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public AddCommentCommandHandler(IUserRepository userRepository, IPostRepository postRepository, IUnitOfWork unitOfWork)
+    public AddCommentCommandHandler(IUserRepository userRepository, IPostRepository postRepository)
     {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task Handle(AddCommentCommand request, CancellationToken cancellationToken)
@@ -29,7 +27,5 @@ internal class AddCommentCommandHandler : IRequestHandler<AddCommentCommand>
         }
 
         post.AddComment(rater, request.Content);
-
-        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

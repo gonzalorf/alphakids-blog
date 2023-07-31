@@ -10,13 +10,11 @@ internal sealed class LoginCommandHandler
 {
     private readonly IJwtProvider jwtProvider;
     private readonly IUserRepository userRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public LoginCommandHandler(IJwtProvider jwtProvider, IUserRepository userRepository, IUnitOfWork unitOfWork)
+    public LoginCommandHandler(IJwtProvider jwtProvider, IUserRepository userRepository)
     {
         this.jwtProvider = jwtProvider;
         this.userRepository = userRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)

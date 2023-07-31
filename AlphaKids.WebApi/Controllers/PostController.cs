@@ -46,7 +46,7 @@ public class PostController : ControllerBase
         return Results.Ok();
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id}"), Authorize]
     public async Task<IResult> Put(Guid id, [FromBody] UpdatePostRequest request)
     {
         try
@@ -69,7 +69,7 @@ public class PostController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}"), Authorize]
     public async Task<IResult> Delete(Guid id)
     {
         try

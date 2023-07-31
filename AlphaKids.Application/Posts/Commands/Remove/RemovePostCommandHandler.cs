@@ -7,12 +7,10 @@ namespace AlphaKids.Application.Posts.Commands.Remove;
 internal class RemovePostCommandHandler : IRequestHandler<RemovePostCommand>
 {
     private readonly IPostRepository postRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public RemovePostCommandHandler(IPostRepository postRepository, IUnitOfWork unitOfWork)
+    public RemovePostCommandHandler(IPostRepository postRepository)
     {
         this.postRepository = postRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task Handle(RemovePostCommand request, CancellationToken cancellationToken)
@@ -25,7 +23,5 @@ internal class RemovePostCommandHandler : IRequestHandler<RemovePostCommand>
         }
 
         postRepository.Remove(post);
-
-        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

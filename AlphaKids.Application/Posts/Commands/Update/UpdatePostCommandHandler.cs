@@ -9,13 +9,11 @@ internal class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
 {
     private readonly IPostRepository postRepository;
     private readonly ICategoryRepository categoryRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public UpdatePostCommandHandler(IPostRepository postRepository, ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
+    public UpdatePostCommandHandler(IPostRepository postRepository, ICategoryRepository categoryRepository)
     {
         this.postRepository = postRepository;
         this.categoryRepository = categoryRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task Handle(UpdatePostCommand request, CancellationToken cancellationToken)
@@ -29,7 +27,5 @@ internal class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand>
         PostValidator.ValidatePost(post);
 
         postRepository.Update(post);
-
-        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

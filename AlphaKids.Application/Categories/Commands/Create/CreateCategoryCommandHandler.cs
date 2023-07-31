@@ -7,12 +7,10 @@ namespace AlphaKids.Application.Categories.Commands.Create;
 internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand>
 {
     private readonly ICategoryRepository categoryRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public CreateCategoryCommandHandler(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
+    public CreateCategoryCommandHandler(ICategoryRepository categoryRepository)
     {
         this.categoryRepository = categoryRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
@@ -22,7 +20,5 @@ internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComm
             );
 
         _ = categoryRepository.Add(post);
-
-        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

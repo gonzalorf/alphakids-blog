@@ -9,13 +9,11 @@ internal class AddRateCommandHandler : IRequestHandler<AddRateCommand>
 {
     private readonly IUserRepository userRepository;
     private readonly IPostRepository postRepository;
-    private readonly IUnitOfWork unitOfWork;
 
-    public AddRateCommandHandler(IUserRepository userRepository, IPostRepository postRepository, IUnitOfWork unitOfWork)
+    public AddRateCommandHandler(IUserRepository userRepository, IPostRepository postRepository)
     {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
-        this.unitOfWork = unitOfWork;
     }
 
     public async Task Handle(AddRateCommand request, CancellationToken cancellationToken)
@@ -29,7 +27,5 @@ internal class AddRateCommandHandler : IRequestHandler<AddRateCommand>
         }
 
         post.AddRate(rater, request.Value);
-
-        _ = await unitOfWork.CommitAsync(cancellationToken);
     }
 }

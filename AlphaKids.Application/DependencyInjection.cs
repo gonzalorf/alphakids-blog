@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AlphaKids.Application.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AlphaKids.Application;
@@ -9,7 +10,10 @@ public static class DependencyInjection
     {
         var assembly = typeof(DependencyInjection).Assembly;
 
-        _ = services.AddMediatR(configuration => { _ = configuration.RegisterServicesFromAssemblies(assembly); });
+        _ = services.AddMediatR(configuration => { 
+            _ = configuration.RegisterServicesFromAssemblies(assembly);
+            _ = configuration.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
+        });
 
         _ = services.AddValidatorsFromAssembly(assembly);
 
