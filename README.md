@@ -1,2 +1,3 @@
-# alphakids-blog
-A Blog demo.
+# Nano Blog Engine
+
+Simple blog engine.
