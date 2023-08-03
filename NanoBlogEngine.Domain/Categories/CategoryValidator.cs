@@ -7,7 +7,7 @@ public class CategoryValidator : AbstractValidator<Category>
 {
     public CategoryValidator()
     {
-        _ = RuleFor(c => c.Name).NotEmpty().MinimumLength(3).MaximumLength(24);
+        _ = RuleFor(c => c.Name).NotEmpty().MinimumLength(2).MaximumLength(24);
     }
 
     public static void ValidateCategory(Category category)

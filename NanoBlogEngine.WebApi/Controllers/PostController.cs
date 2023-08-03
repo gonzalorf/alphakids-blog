@@ -38,7 +38,7 @@ public class PostController : ControllerBase
         }
     }
 
-    [HttpPost, Authorize]
+    [HttpPost, , Authorize(Roles = "Administrator")]
     public async Task<IResult> Post([FromBody] CreatePostCommand command)
     {
         var postId = await mediator.Send(command);
@@ -46,7 +46,7 @@ public class PostController : ControllerBase
         return Results.Ok(postId);
     }
 
-    [HttpPut("{id}"), Authorize]
+    [HttpPut("{id}"), , Authorize(Roles = "Administrator")]
     public async Task<IResult> Put(Guid id, [FromBody] UpdatePostRequest request)
     {
         try
@@ -69,7 +69,7 @@ public class PostController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}"), Authorize]
+    [HttpDelete("{id}"), , Authorize(Roles = "Administrator")]
     public async Task<IResult> Delete(Guid id)
     {
         try
@@ -84,7 +84,7 @@ public class PostController : ControllerBase
         }
     }
 
-    [HttpPost, Route("RatePost")]
+    [HttpPost, Route("RatePost"), Authorize(Roles = "Administrator,BlogReader")]
     public async Task<IResult> RatePost([FromBody] AddRateCommand command)
     {
         await mediator.Send(command);
@@ -92,7 +92,7 @@ public class PostController : ControllerBase
         return Results.Ok();
     }
 
-    [HttpPost, Route("CommentPost")]
+    [HttpPost, Route("CommentPost"), Authorize(Roles = "Administrator,BlogReader")]
     public async Task<IResult> CommentPost([FromBody] AddCommentCommand command)
     {
         await mediator.Send(command);

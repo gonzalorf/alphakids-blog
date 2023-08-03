@@ -24,4 +24,13 @@ public class UserController : ControllerBase
 
         return Results.Ok(jwt);
     }
+
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<IResult> Signup([FromBody] LoginCommand command)
+    {
+        var jwt = await mediator.Send(command);
+
+        return Results.Ok(jwt);
+    }
 }
