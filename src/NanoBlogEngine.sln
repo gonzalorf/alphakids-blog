@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B2FD0406-986
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D474B7C2-A09D-40DC-AB05-81EC472CE222}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Domain", "NanoBlogEngine.Domain\NanoBlogEngine.Domain.csproj", "{8D8ED401-A0EF-4685-B060-378E3EC40FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Domain", "Backend\NanoBlogEngine.Domain\NanoBlogEngine.Domain.csproj", "{8D8ED401-A0EF-4685-B060-378E3EC40FFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Application", "NanoBlogEngine.Application\NanoBlogEngine.Application.csproj", "{B2F5C2D5-5A5D-4DEA-81F0-A89DE0975496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Application", "Backend\NanoBlogEngine.Application\NanoBlogEngine.Application.csproj", "{B2F5C2D5-5A5D-4DEA-81F0-A89DE0975496}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Infrastructure", "NanoBlogEngine.Infrastructure\NanoBlogEngine.Infrastructure.csproj", "{AD14896E-CB1D-4774-A13B-B8BBFBC5F087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Infrastructure", "Backend\NanoBlogEngine.Infrastructure\NanoBlogEngine.Infrastructure.csproj", "{AD14896E-CB1D-4774-A13B-B8BBFBC5F087}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.WebApi", "NanoBlogEngine.WebApi\NanoBlogEngine.WebApi.csproj", "{B1712C33-6AD7-4BAF-8F94-CF40178960DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.WebApi", "Backend\NanoBlogEngine.WebApi\NanoBlogEngine.WebApi.csproj", "{B1712C33-6AD7-4BAF-8F94-CF40178960DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.BlazorSite", "NanoBlogEngine.BlazorSite\NanoBlogEngine.BlazorSite.csproj", "{E8892671-19AC-4F87-B0CD-CB2387B1C706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.BlazorSite", "Frontend\NanoBlogEngine.BlazorSite\NanoBlogEngine.BlazorSite.csproj", "{E8892671-19AC-4F87-B0CD-CB2387B1C706}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C}"
 EndProject
