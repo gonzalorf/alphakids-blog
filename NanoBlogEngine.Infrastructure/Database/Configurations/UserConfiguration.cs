@@ -14,5 +14,8 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 
         _ = builder.Property(e => e.Id)
                     .HasConversion(id => id.Value, value => new UserId(value));
+
+        _ = builder.Property(e => e.Role)
+                    .HasConversion(r => r.Name, value => UserRole.CreateFromName(value));
     }
 }

@@ -33,7 +33,7 @@ public class CategoryController : ControllerBase
         }
     }
 
-    [HttpPost, Authorize]
+    [HttpPost, Authorize(Roles = "Administrator")]
     public async Task<IResult> Post([FromBody] CreateCategoryCommand command)
     {
         await mediator.Send(command);

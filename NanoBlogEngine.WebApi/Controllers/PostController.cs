@@ -41,7 +41,7 @@ public class PostController : ControllerBase
     [HttpPost, Authorize]
     public async Task<IResult> Post([FromBody] CreatePostCommand command)
     {
-        var postId =await mediator.Send(command);
+        var postId = await mediator.Send(command);
 
         return Results.Ok(postId);
     }

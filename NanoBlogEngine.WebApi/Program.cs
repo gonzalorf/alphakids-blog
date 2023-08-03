@@ -24,16 +24,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<UnhandledExceptionMiddleware>();
 
+// Security
 builder.Services.ConfigureOptions<JwtOptionsConfig>();
 builder.Services.ConfigureOptions<JwtBearerOptionsConfig>();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer();
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddSingleton<IConfigureOptions<JwtBearerOptions>, JwtBearerOptionsConfig>();
-
-
 builder.Services.AddSingleton<IJwtProvider, JwtProvider>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
