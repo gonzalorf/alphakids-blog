@@ -1,1 +1,162 @@
-﻿
+﻿/* Paleta de colores */
+:root {
+    --primary-color: #007BFF; /* Azul principal */
+    --secondary-color: #0056b3; /* Azul secundario */
+    --background-color: #F8F8F8; /* Fondo gris claro */
+    --text-color: #333; /* Texto negro */
+    --header-background: #e2e2e2; /* Fondo del encabezado */
+    --footer-background: #333; /* Fondo del pie de página */
+}
+
+/* Resetear algunos estilos por defecto del navegador */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    min-height: 98vh; /* Asegurar que el cuerpo tenga al menos la altura de la ventana */
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* Estilo del encabezado */
+header {
+    background-color: var(--header-background);
+    color: var(--text-color);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Distribuir elementos a ambos lados */
+    align-items: center; /* Centrar verticalmente los elementos */
+}
+
+.page-title {
+    padding-top: 0.6rem;
+    text-align: center;
+    font-size: 3rem;
+    width: 100%;
+}
+
+.logo {
+    padding-top: 0.4rem;
+}
+
+    .logo img {
+        height: 4rem;
+    }
+
+/* Estilo de los enlaces a la izquierda */
+nav.left {
+    width: 100%; /* Ocupar todo el espacio disponible */
+}
+
+    nav.left ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-start; /* Alinear a la izquierda */
+    }
+
+    nav.left li {
+        margin: 0 1rem;
+    }
+
+    nav.left a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: bold;
+    }
+
+/* Estilo de los enlaces a la derecha */
+nav.right {
+    width: 100%; /* Ocupar todo el espacio disponible */
+}
+
+    nav.right ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end; /* Alinear a la derecha */
+    }
+
+    nav.right li {
+        margin: 0 1rem;
+    }
+
+    nav.right a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: bold;
+    }
+
+/* Estilo del contenido principal */
+main {
+    padding: 5rem 0 2rem 0;
+    min-height: calc(100vh - 2 * 5rem); /* Restar el doble del padding del encabezado y el pie de página */
+}
+
+/* Estilo del pie de página */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--footer-background);
+    color: #fff;
+    text-align: center;
+}
+
+/* Color de fondo para todo el header */
+header {
+    background-color: var(--header-background);
+}
+
+
+#wrapper {
+    max-width: 80%;
+    margin: 50px auto;
+}
+
+.pin {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .pin div {
+        padding: 20px;
+    }
+
+    .pin img {
+        width: 100%;
+    }
+
+    .pin small {
+        font-size: 0.7rem;
+        color: #999;
+    }
+
+.read-post {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: 0.6s; /* Transición suave al pasar el cursor sobre el enlace */
+    text-align: end;
+}
+
+    .read-post:hover {
+        color: var(--secondary-color);
+    }
+
+#columns {
+    column-gap: 1.4rem;
+    column-count: 3;
+}
