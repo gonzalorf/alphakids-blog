@@ -16,7 +16,7 @@ body, h1, h2, h3, p, ul, li {
 
 body {
     position: relative;
-    min-height: 98vh; /* Asegurar que el cuerpo tenga al menos la altura de la ventana */
+    min-height: 100vh; /* Asegurar que el cuerpo tenga al menos la altura de la ventana */
     margin: 0;
     font-family: "Poppins",sans-serif;
 }
@@ -100,13 +100,18 @@ main {
 
 /* Estilo del pie de página */
 footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: var(--footer-background);
     color: #fff;
-    text-align: center;
+    /*text-align: center;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;*/
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; /* Footer height */
 }
 
 /* Color de fondo para todo el header */
@@ -159,4 +164,39 @@ header {
 #columns {
     column-gap: 1.4rem;
     column-count: 3;
+}
+
+
+/*Forms*/
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
 }

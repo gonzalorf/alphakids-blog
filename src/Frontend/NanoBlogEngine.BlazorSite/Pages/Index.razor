@@ -1,30 +1,12 @@
 ﻿@page "/"
+@using NanoBlogEngine.BlazorSite.Components.Posts;
 
-@inject IHttpClientFactory httpClientFactory
-
-
-<PageTitle>Welcome to Blog</PageTitle>
-
-<div class="">
-
-    <PostMiniature
-        Picture="http://via.placeholder.com/640x360"
-        Title="Post Title #1"
-        Resume="Blah blah blah..." />
-
-    <PostMiniature
-        Picture="http://via.placeholder.com/800x800"
-        Title="Post Title #2"
-        Resume="Blah blah blah..." />
-
-    <PostMiniature
-        Picture="http://via.placeholder.com/640x360"
-        Title="Post Title #3"
-        Resume="Blah blah blah..." />
-
-    <PostMiniature
-        Picture="http://via.placeholder.com/800x800"
-        Title="Post Title #4"
-        Resume="Blah blah blah..." />
-
+<div id="wrapper">
+    <div id="columns">
+        <PostMiniature />
+        <PostMiniature />
+        <PostMiniature />
+        <PostMiniature />
+        <PostMiniature />
+    </div>
 </div>
