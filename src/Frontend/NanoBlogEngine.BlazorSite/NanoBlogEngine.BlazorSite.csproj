@@ -11,9 +11,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.7" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\fonts\" />
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
 </Project>
