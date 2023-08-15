@@ -15,7 +15,7 @@ public class Program
         builder.Services.AddHttpClient<BlogService>((serviceProvider, httpClient) =>
         {
             // Set the base address of the named client.
-            httpClient.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
+            httpClient.BaseAddress = new Uri("https://localhost:7237/api");
 
             // Add a user-agent default request header.
             httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");

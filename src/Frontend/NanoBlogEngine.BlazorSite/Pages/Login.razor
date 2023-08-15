@@ -11,12 +11,12 @@
     <label></label>
     <form>
         <label for="loginName">Username</label>
-        <input type="text" id="loginName" name="loginName" value="@loginData.Email" required>
+        <input type="text" id="loginName" name="loginName" @bind-value="@loginData.Email" required>
 
         <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="@loginData.Password" required>
+            <input type="password" id="password" name="password" @bind-value="@loginData.Password" required>
 
-        <button type="button" onclick="DoLogin">Login</button>
+        <button type="button" @onclick="DoLogin">Login</button>
     </form>
 </div>
 

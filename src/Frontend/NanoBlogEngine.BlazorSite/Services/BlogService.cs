@@ -16,10 +16,20 @@ sealed class BlogService
 
     public async Task<string> LoginAsync(Login login)
     {
-        var response = await httpClient.PostAsJsonAsync<Login>("User/Login", login);
-        var jwt = await response.Content.ReadFromJsonAsync<string>();
+        Console.WriteLine(httpClient.BaseAddress.ToString());
+        try
+        {
+            var response = await httpClient.PostAsJsonAsync<Login>("User/Login", login);
+            var jwt = await response.Content.ReadFromJsonAsync<string>();
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+        
 
         //
-        return jwt;
+        return "";
     }
 }
