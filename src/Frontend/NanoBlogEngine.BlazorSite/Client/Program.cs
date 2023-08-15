@@ -9,7 +9,7 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.RootComponents.Add<App>("#app");
+        builder.RootComponents.Add<NanoBlogEngine.BlazorSite.App>("#app");
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
         builder.Services.AddHttpClient<BlogService>((serviceProvider, httpClient) =>

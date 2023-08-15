@@ -2,4 +2,4 @@
 
 namespace NanoBlogEngine.Application.Users.Commands.Login;
 
-public record LoginCommand(string Email) : CommandBase<string>;
+public record LoginCommand(string Email, string Password) : CommandBase<string>;

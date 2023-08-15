@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.WebApi", "Backend\NanoBlogEngine.WebApi\NanoBlogEngine.WebApi.csproj", "{B1712C33-6AD7-4BAF-8F94-CF40178960DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NanoBlogEngine.BlazorSite", "Frontend\NanoBlogEngine.BlazorSite\NanoBlogEngine.BlazorSite.csproj", "{E8892671-19AC-4F87-B0CD-CB2387B1C706}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{6BD6CB36-5734-4A79-8C98-BCF4EA4A3981}"
@@ -26,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NanoBlogEngine.BlazorSite", "Frontend\NanoBlogEngine.BlazorSite\NanoBlogEngine.BlazorSite.csproj", "{1FA70FF4-83C2-45A0-9106-C451834BBAAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,10 @@ Global
 		{B1712C33-6AD7-4BAF-8F94-CF40178960DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1712C33-6AD7-4BAF-8F94-CF40178960DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1712C33-6AD7-4BAF-8F94-CF40178960DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8892671-19AC-4F87-B0CD-CB2387B1C706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8892671-19AC-4F87-B0CD-CB2387B1C706}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8892671-19AC-4F87-B0CD-CB2387B1C706}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8892671-19AC-4F87-B0CD-CB2387B1C706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA70FF4-83C2-45A0-9106-C451834BBAAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA70FF4-83C2-45A0-9106-C451834BBAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA70FF4-83C2-45A0-9106-C451834BBAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA70FF4-83C2-45A0-9106-C451834BBAAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,9 +62,9 @@ Global
 		{B2F5C2D5-5A5D-4DEA-81F0-A89DE0975496} = {B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C}
 		{AD14896E-CB1D-4774-A13B-B8BBFBC5F087} = {B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C}
 		{B1712C33-6AD7-4BAF-8F94-CF40178960DD} = {B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C}
-		{E8892671-19AC-4F87-B0CD-CB2387B1C706} = {6BD6CB36-5734-4A79-8C98-BCF4EA4A3981}
 		{B9803612-C2B2-4FE3-AF66-4E6BCBA12F8C} = {B2FD0406-9868-4086-9581-3EB945059E3E}
 		{6BD6CB36-5734-4A79-8C98-BCF4EA4A3981} = {B2FD0406-9868-4086-9581-3EB945059E3E}
+		{1FA70FF4-83C2-45A0-9106-C451834BBAAB} = {6BD6CB36-5734-4A79-8C98-BCF4EA4A3981}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {472CCDA8-CBF2-402D-8776-DE8FB6353ACC}

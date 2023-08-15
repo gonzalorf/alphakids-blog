@@ -1,4 +1,7 @@
-﻿namespace NanoBlogEngine.BlazorSite.Services;
+﻿using NanoBlogEngine.BlazorSite.Services.Contracts.BlogService.Requests;
+using System.Net.Http.Json;
+
+namespace NanoBlogEngine.BlazorSite.Services;
 
 sealed class BlogService
 {
@@ -11,8 +14,12 @@ sealed class BlogService
         this.logger = logger;
     }
 
-    //public async Task<string> GetCategoriesAsync()
-    //{
+    public async Task<string> LoginAsync(Login login)
+    {
+        var response = await httpClient.PostAsJsonAsync<Login>("User/Login", login);
+        var jwt = await response.Content.ReadFromJsonAsync<string>();
 
-    //}
+        //
+        return jwt;
+    }
 }

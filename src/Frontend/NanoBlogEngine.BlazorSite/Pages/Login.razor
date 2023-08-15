@@ -1,18 +1,22 @@
 ﻿@page "/login"
 @layout EmptyLayout
 
+@inject BlogService blogService;
+
+@using LoginData = Services.Contracts.BlogService.Requests.Login;
+
 <main>
 
 <div class="card">
     <label></label>
     <form>
         <label for="loginName">Username</label>
-        <input type="text" id="loginName" name="loginName" required>
+        <input type="text" id="loginName" name="loginName" value="@loginData.Email" required>
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" value="@loginData.Password" required>
 
-        <button type="submit">Login</button>
+        <button type="button" onclick="DoLogin">Login</button>
     </form>
 </div>
 
@@ -21,3 +25,14 @@
 <footer>
     &copy; 2023 Your Company. All rights reserved.
 </footer>
+
+@code{
+    LoginData loginData = new LoginData();
+
+    async Task DoLogin()
+    {
+        var jwtResponse = await blogService.LoginAsync(loginData);
+    }
+
+
+}
