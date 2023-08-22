@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using NanoBlogEngine.Application.Users;
 
 namespace NanoBlogEngine.WebApi.Controllers;
 
@@ -20,9 +21,9 @@ public class UserController : ControllerBase
     [AllowAnonymous]
     public async Task<IResult> Login([FromBody] LoginCommand command)
     {
-        var jwt = await mediator.Send(command);
+        var userSession = await mediator.Send(command);
 
-        return Results.Ok(jwt);
+        return Results.Ok(userSession);
     }
 
     //[HttpPost]

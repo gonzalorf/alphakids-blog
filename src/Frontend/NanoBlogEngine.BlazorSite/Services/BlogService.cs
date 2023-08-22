@@ -1,4 +1,5 @@
 ﻿using NanoBlogEngine.BlazorSite.Services.Contracts.BlogService.Requests;
+using NanoBlogEngine.BlazorSite.Services.Contracts.BlogService.Responses;
 using System.Net.Http.Json;
 
 namespace NanoBlogEngine.BlazorSite.Services;
@@ -14,22 +15,19 @@ sealed class BlogService
         this.logger = logger;
     }
 
-    public async Task<string> LoginAsync(Login login)
+    public async Task<UserSession> LoginAsync(Login login)
     {
         Console.WriteLine(httpClient.BaseAddress.ToString());
         try
         {
-            var response = await httpClient.PostAsJsonAsync<Login>("User/Login", login);
-            var jwt = await response.Content.ReadFromJsonAsync<string>();
+            var response = await httpClient.PostAsJsonAsync("User", login);
+            var jwt = await response.Content.ReadFromJsonAsync<UserSession>();
+            return jwt;
         }
         catch (Exception ex)
         {
 
             throw;
         }
-        
-
-        //
-        return "";
     }
 }

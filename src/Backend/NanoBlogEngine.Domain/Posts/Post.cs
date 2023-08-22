@@ -1,11 +1,12 @@
 ﻿using NanoBlogEngine.Domain.Categories;
+using NanoBlogEngine.Domain.Posts.Events;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Domain.Users;
 using System.Collections.Generic;
 
 namespace NanoBlogEngine.Domain.Posts;
 
-public class Post : Entity, IAggregateRoot
+public class Post : AuditableEntity, IAggregateRoot
 {
     private readonly List<Comment> comments = new();
     private readonly List<Category> categories = new();
@@ -70,6 +71,8 @@ public class Post : Entity, IAggregateRoot
         RateValidator.ValidateRate(rate);
 
         rates.Add(rate);
+
+        AddDomainEvent(new PostRatedEvent(Id));
     }
 
     public void AddComment(User? author, string content)

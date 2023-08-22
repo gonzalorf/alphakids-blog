@@ -16,12 +16,14 @@ internal sealed class LoginCommandHandler
         this.userRepository = userRepository;
     }
 
-    public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<UserSessionDto> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetByEmail(request.Email) ?? throw new UserNotFoundException(request.Email);
 
         var jwt = jwtProvider.GetJwt(user);
 
-        return jwt;
+        var userSession = new UserSessionDto(user.Name, "", user.Email, user.Role.Name, jwt);
+
+        return userSession;
     }
 }

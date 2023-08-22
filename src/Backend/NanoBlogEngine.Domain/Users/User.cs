@@ -1,6 +1,8 @@
-﻿namespace NanoBlogEngine.Domain.Users;
+﻿using NanoBlogEngine.Domain.SeedWork;
 
-public class User
+namespace NanoBlogEngine.Domain.Users;
+
+public class User : Entity, IAggregateRoot
 {
     public User(UserId id, string name, string email, string password)
     {
