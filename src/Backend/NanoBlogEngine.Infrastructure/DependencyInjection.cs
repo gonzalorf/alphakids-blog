@@ -10,6 +10,7 @@ using NanoBlogEngine.Infrastructure.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure;
 

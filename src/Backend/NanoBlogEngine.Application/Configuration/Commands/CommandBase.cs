@@ -17,17 +17,13 @@ public abstract record CommandBase : ICommand
     }
 }
 
-public abstract record CommandBase<TResult> : ICommand<TResult>
+public abstract record CommandBase<TResult> : CommandBase, ICommand<TResult>
 {
-    public Guid Id { get; }
-
-    protected CommandBase()
+    protected CommandBase() : base()
     {
-        Id = Guid.NewGuid();
     }
 
-    protected CommandBase(Guid id)
+    protected CommandBase(Guid id) : base(id)
     {
-        Id = id;
     }
 }

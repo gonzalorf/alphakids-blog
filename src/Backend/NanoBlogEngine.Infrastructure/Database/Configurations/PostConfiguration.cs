@@ -8,7 +8,7 @@ internal class PostConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
     {
-        _ = builder.ToTable("Posts");
+        _ = builder.ToTable("Posts", SchemaNames.Blog);
 
         _ = builder.HasKey(x => x.Id);
 

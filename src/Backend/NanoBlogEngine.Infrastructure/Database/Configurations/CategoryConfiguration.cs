@@ -8,7 +8,7 @@ internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
 {
     public void Configure(EntityTypeBuilder<Category> builder)
     {
-        _ = builder.ToTable("Categories");
+        _ = builder.ToTable("Categories", SchemaNames.Blog);
 
         _ = builder.HasKey(x => x.Id);
 

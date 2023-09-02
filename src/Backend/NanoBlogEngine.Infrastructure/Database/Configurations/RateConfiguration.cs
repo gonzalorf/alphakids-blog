@@ -8,7 +8,7 @@ internal class RateConfiguration : IEntityTypeConfiguration<Rate>
 {
     public void Configure(EntityTypeBuilder<Rate> builder)
     {
-        _ = builder.ToTable("Rates");
+        _ = builder.ToTable("Rates", SchemaNames.Blog);
 
         _ = builder.HasKey(x => x.Id);
 

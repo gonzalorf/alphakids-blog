@@ -1,6 +1,8 @@
 ﻿using NanoBlogEngine.Domain.Users;
 using NanoBlogEngine.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
+using NanoBlogEngine.Domain.Posts;
+using Microsoft.Extensions.Hosting;
 
 namespace NanoBlogEngine.Infrastructure.Domain.Users;
 
@@ -13,9 +15,19 @@ public class UserRepository : IUserRepository
         this.context = context;
     }
 
-    public void Add(User user)
+    public async Task Add(User user)
     {
-        _ = context.Users.Add(user);
+        _ = await context.Users.AddAsync(user);
+    }
+
+    public void Remove(User user)
+    {
+        _ = context.Users.Remove(user);
+    }
+
+    public void Update(User user)
+    {
+        _ = context.Users.Update(user);
     }
 
     public async Task<User?> GetByEmail(string email)
@@ -26,15 +38,5 @@ public class UserRepository : IUserRepository
     public async Task<User?> GetById(UserId id)
     {
         return await context.Users.FirstOrDefaultAsync(p => p.Id == id);
-    }
-
-    public void Remove(User user)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(User user)
-    {
-        throw new NotImplementedException();
     }
 }

@@ -13,9 +13,9 @@ public class PostRepository : IPostRepository
         this.context = context;
     }
 
-    public void Add(Post post)
+    public async Task Add(Post post)
     {
-        _ = context.Posts.Add(post);
+        _ = await context.Posts.AddAsync(post);
     }
 
     public async Task<Post?> GetById(PostId id)
@@ -25,11 +25,11 @@ public class PostRepository : IPostRepository
 
     public void Remove(Post post)
     {
-        throw new NotImplementedException();
+        _ = context.Posts.Remove(post);
     }
 
     public void Update(Post post)
     {
-        throw new NotImplementedException();
+        _ = context.Posts.Update(post);
     }
 }

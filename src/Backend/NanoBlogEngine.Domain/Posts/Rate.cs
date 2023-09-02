@@ -1,19 +1,18 @@
-﻿using NanoBlogEngine.Domain.Users;
+﻿using NanoBlogEngine.Domain.SeedWork;
+using NanoBlogEngine.Domain.Users;
 
 namespace NanoBlogEngine.Domain.Posts;
 
-public class Rate
+public class Rate : Entity<RateId>
 {
-    private Rate() { }
+    private Rate() : base() { }
 
-    internal Rate(RateId id, int value, User? rater)
+    internal Rate(RateId id, int value, User? rater) : base(id)
     {
-        Id = id;
         Value = value;
         Rater = rater;
     }
 
-    public RateId Id { get; private set; }
     public int Value { get; private set; }
     public User? Rater { get; private set; }
 }

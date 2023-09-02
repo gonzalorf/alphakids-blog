@@ -5,7 +5,7 @@ using NanoBlogEngine.Domain.Users;
 namespace NanoBlogEngine.Application.Users.Commands.Login;
 
 internal sealed class LoginCommandHandler
-    : ICommandHandler<LoginCommand, string>
+    : ICommandHandler<LoginCommand, UserSessionDto>
 {
     private readonly IJwtProvider jwtProvider;
     private readonly IUserRepository userRepository;

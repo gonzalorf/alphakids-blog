@@ -8,7 +8,7 @@ internal class CommentConfiguration : IEntityTypeConfiguration<Comment>
 {
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
-        _ = builder.ToTable("Comments");
+        _ = builder.ToTable("Comments", SchemaNames.Blog);
 
         _ = builder.HasKey(x => x.Id);
 

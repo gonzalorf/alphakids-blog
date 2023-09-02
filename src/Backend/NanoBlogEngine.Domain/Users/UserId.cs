@@ -1,3 +1,5 @@
-﻿namespace NanoBlogEngine.Domain.Users;
+﻿using NanoBlogEngine.Domain.SeedWork;
 
-public record UserId(Guid Value);
+namespace NanoBlogEngine.Domain.Users;
+
+public record UserId(Guid Value) : TypedIdValueBase(Value);

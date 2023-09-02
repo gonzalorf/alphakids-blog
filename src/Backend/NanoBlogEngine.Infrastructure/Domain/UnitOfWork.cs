@@ -1,19 +1,20 @@
 ﻿using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Database;
+using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Domain;
 
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext context;
-    private readonly IDomainEventsDispatcher domainEventsDispatcher;
+    //private readonly IDomainEventsDispatcher domainEventsDispatcher;
 
     public UnitOfWork(
-        ApplicationDbContext context,
-        IDomainEventsDispatcher domainEventsDispatcher)
+        ApplicationDbContext context
+        )
     {
         this.context = context;
-        this.domainEventsDispatcher = domainEventsDispatcher;
+        //this.domainEventsDispatcher = domainEventsDispatcher;
     }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)

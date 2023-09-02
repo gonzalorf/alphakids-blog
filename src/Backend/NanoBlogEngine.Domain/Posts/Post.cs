@@ -6,26 +6,27 @@ using System.Collections.Generic;
 
 namespace NanoBlogEngine.Domain.Posts;
 
-public class Post : AuditableEntity, IAggregateRoot
+public class Post : AuditableEntity<PostId>, IAggregateRoot
 {
     private readonly List<Comment> comments = new();
     private readonly List<Category> categories = new();
     private readonly List<Rate> rates = new();
 
-    public PostId Id { get; private init; }
-    public string Title { get; private set; }
-    public string Preview { get; private set; }
-    public string Content { get; private set; }
+    public string Title { get; private set; } = string.Empty;
+    public string Preview { get; private set; } = string.Empty;
+    public string Content { get; private set; } = string.Empty;
     public IReadOnlyCollection<Comment> Comments => comments.AsReadOnly();
     public IReadOnlyCollection<Category> Categories => categories.AsReadOnly();
     public IReadOnlyCollection<Rate> Rates => rates.AsReadOnly();
 
-    private Post()
-    { }
+    private Post() : base() { }
 
-    private Post(PostId id, string title, string preview, string content, IReadOnlyCollection<Category> categories)
+    private Post(PostId id
+        , string title
+        , string preview
+        , string content
+        , IReadOnlyCollection<Category> categories) : base(id)
     {
-        Id = id;
         Title = title;
         Preview = preview;
         Content = content;
@@ -83,6 +84,8 @@ public class Post : AuditableEntity, IAggregateRoot
             , author);
 
         comments.Add(comment);
+
+        AddDomainEvent(new PostCommentedEvent(Id, comment.Id));
     }
 
     public void AddCategory(Category category)

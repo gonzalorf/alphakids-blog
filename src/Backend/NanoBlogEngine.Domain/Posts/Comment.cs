@@ -1,19 +1,18 @@
-﻿using NanoBlogEngine.Domain.Users;
+﻿using NanoBlogEngine.Domain.SeedWork;
+using NanoBlogEngine.Domain.Users;
 
 namespace NanoBlogEngine.Domain.Posts;
 
-public class Comment
+public class Comment : Entity<CommentId>
 {
-    private Comment() { }
+    private Comment() : base() { }
 
-    internal Comment(CommentId id, string content, User? author)
+    internal Comment(CommentId id, string content, User? author) : base(id)
     {
-        Id = id;
         Content = content;
         Author = author;
     }
 
-    public CommentId Id { get; private set; }
-    public string Content { get; private set; }
+    public string Content { get; private set; } = string.Empty;
     public User? Author { get; private set; }
 }

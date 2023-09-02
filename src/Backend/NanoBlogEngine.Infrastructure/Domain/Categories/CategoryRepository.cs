@@ -13,9 +13,9 @@ public class CategoryRepository : ICategoryRepository
         this.context = context;
     }
 
-    public void Add(Category category)
+    public async Task Add(Category category)
     {
-        _ = context.Categories.Add(category);
+        _ = await context.Categories.AddAsync(category);
     }
 
     public void Remove(Category category)
@@ -28,7 +28,7 @@ public class CategoryRepository : ICategoryRepository
         return await context.Categories.ToArrayAsync();
     }
 
-    public async Task<Category> GetById(CategoryId id)
+    public async Task<Category?> GetById(CategoryId id)
     {
         return await context.Categories.FirstOrDefaultAsync(p => p.Id == id);
     }
