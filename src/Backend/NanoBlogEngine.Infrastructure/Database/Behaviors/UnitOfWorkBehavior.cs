@@ -23,15 +23,11 @@ public sealed class UnitOfWorkBehavior<TRequest, TResponse>
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        if (typeof(TRequest) is not ICommand)
+
+        if(!typeof(ICommand).IsAssignableFrom(typeof(TRequest)))
         {
             return await next();
         }
-
-        //if(!typeof(TRequest).Name.EndsWith("Command")) // by convention 🙏
-        //{
-        //    return await next();
-        //}
 
         var response = await next();
 

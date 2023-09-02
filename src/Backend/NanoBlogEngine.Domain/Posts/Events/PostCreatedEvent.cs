@@ -7,4 +7,4 @@ using System.Threading.Tasks;
 
 namespace NanoBlogEngine.Domain.Posts.Events;
 
-public record PostCommentedEvent(PostId PostId, CommentId CommentId) : DomainEventBase;
+public record PostCreatedEvent(PostId PostId) : DomainEventBase;

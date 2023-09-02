@@ -1,6 +1,7 @@
 ﻿using NanoBlogEngine.Application.Configuration.Commands;
 using NanoBlogEngine.Domain.Categories;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Events;
 
 namespace NanoBlogEngine.Application.Posts.Commands.Create;
 
@@ -25,7 +26,9 @@ internal class CreatePostCommandHandler : ICommandHandler<CreatePostCommand, Pos
             , categories.ToList()
             );
 
-        postRepository.Add(post);
+        await postRepository.Add(post);
+
+        post.AddDomainEvent(new PostCreatedEvent(post.Id));
 
         return post.Id;
     }

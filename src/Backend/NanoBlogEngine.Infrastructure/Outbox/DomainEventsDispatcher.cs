@@ -16,8 +16,7 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
 
     public async Task DispatchEventsAsync()
     {
-        var domainEntities = this.context.ChangeTracker
-            .Entries<IEntity>()
+        var domainEntities = context.ChangeTracker.Entries<IEntity>()
             .Where(x => x.Entity.DomainEvents is not null && x.Entity.DomainEvents.Any()).ToList();
 
         var domainEvents = domainEntities
@@ -27,7 +26,7 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
         foreach (var domainEvent in domainEvents)
         {
             var type = domainEvent.GetType().FullName;            
-            var data =  JsonSerializer.Serialize(domainEvent);
+            var data =  JsonSerializer.Serialize(domainEvent, domainEvent.GetType());
 
             var outboxMessage = new OutboxMessage(
                 domainEvent.OccurredOn,

@@ -19,7 +19,7 @@ public abstract class Entity<TIdType> : IEntity where TIdType : TypedIdValueBase
 
     public IReadOnlyCollection<IDomainEvent>? DomainEvents => _domainEvents?.AsReadOnly();
 
-    protected void AddDomainEvent(IDomainEvent domainEvent)
+    public void AddDomainEvent(IDomainEvent domainEvent)
     {
         _domainEvents ??= new List<IDomainEvent>();
         _domainEvents.Add(domainEvent);
