@@ -1,5 +1,4 @@
-﻿using NanoBlogEngine.Application.Behaviors;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace NanoBlogEngine.Application;
@@ -12,7 +11,6 @@ public static class DependencyInjection
 
         _ = services.AddMediatR(configuration => { 
             _ = configuration.RegisterServicesFromAssemblies(assembly);
-            _ = configuration.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
         });
 
         _ = services.AddValidatorsFromAssembly(assembly);

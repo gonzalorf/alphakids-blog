@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NanoBlogEngine.Infrastructure.Outbox;
+using NanoBlogEngine.Infrastructure.Database.Behaviors;
 
 namespace NanoBlogEngine.Infrastructure;
 
@@ -19,6 +20,8 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
 IConfiguration configuration)
     {
+        var assembly = typeof(DependencyInjection).Assembly;
+
         _ = services.AddDbContext<ApplicationDbContext>(options =>
         {
             _ = options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -35,6 +38,12 @@ IConfiguration configuration)
         _ = services.AddScoped<IPostRepository, PostRepository>();
         _ = services.AddScoped<ICategoryRepository, CategoryRepository>();
         _ = services.AddScoped<IUserRepository, UserRepository>();
+        _ = services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
+
+        _ = services.AddMediatR(configuration => {
+            _ = configuration.RegisterServicesFromAssemblies(assembly);
+            _ = configuration.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
+        });
 
         return services;
     }

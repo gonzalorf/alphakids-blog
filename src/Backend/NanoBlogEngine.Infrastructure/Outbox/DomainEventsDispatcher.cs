@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Autofac;
-using Autofac.Core;
-using MediatR;
-using NanoBlogEngine.Application.Common.Services;
+﻿using System.Text.Json;
 using NanoBlogEngine.Application.Outbox;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Database;
-using Newtonsoft.Json;
-using SampleProject.Application.Configuration.DomainEvents;
-using SampleProject.Domain.SeedWork;
-using SampleProject.Infrastructure.Database;
-using SampleProject.Infrastructure.Processing.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Outbox;
 
@@ -42,10 +29,9 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
             var type = domainEvent.GetType().FullName;            
             var data =  JsonSerializer.Serialize(domainEvent);
 
-
             var outboxMessage = new OutboxMessage(
                 domainEvent.OccurredOn,
-                type,
+                type!,
                 data);
             await context.OutboxMessages.AddAsync(outboxMessage);
         }

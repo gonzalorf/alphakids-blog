@@ -4,12 +4,12 @@ using MediatR;
 
 namespace NanoBlogEngine.Application.Configuration.Commands;
 
-public interface ICommand : IRequest
+public interface ICommand
 {
     Guid Id { get; }
 }
 
-public interface ICommand<out TResult> : ICommand, IRequest<TResult>
-{
+//public interface ICommand<out TResult> : ICommand
+//{
 
-}
+//}

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MediatR;
+using System;
 
 namespace NanoBlogEngine.Application.Configuration.Commands;
 
-public abstract record CommandBase : ICommand
+public abstract record CommandBase : ICommand, IRequest
 {
     public Guid Id { get; }
 
@@ -17,13 +18,17 @@ public abstract record CommandBase : ICommand
     }
 }
 
-public abstract record CommandBase<TResult> : CommandBase, ICommand<TResult>
+public abstract record CommandBase<TResult> : ICommand, IRequest<TResult>
 {
-    protected CommandBase() : base()
+    public Guid Id { get; }
+
+    protected CommandBase()
     {
+        Id = Guid.NewGuid();
     }
 
-    protected CommandBase(Guid id) : base(id)
+    protected CommandBase(Guid id)
     {
+        Id = id;
     }
 }

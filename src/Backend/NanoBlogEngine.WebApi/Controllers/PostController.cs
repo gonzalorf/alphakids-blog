@@ -9,8 +9,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace NanoBlogEngine.WebApi.Controllers;
 
 [Route("api/[controller]")]
@@ -61,7 +59,7 @@ public class PostController : ControllerBase
 
             await mediator.Send(command);
 
-            return Results.NoContent();
+            return Results.Ok();
         }
         catch (PostNotFoundException ex)
         {
@@ -76,7 +74,7 @@ public class PostController : ControllerBase
         {
             await mediator.Send(new RemovePostCommand(new PostId(id)));
 
-            return Results.NoContent();
+            return Results.Ok();
         }
         catch (PostNotFoundException ex)
         {

@@ -23,9 +23,9 @@ public class UnhandledExceptionMiddleware : IMiddleware
         {
             logger.LogError(ex, ex.Message);
 
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = ex is ApplicationException ? (int)HttpStatusCode.BadRequest : (int)HttpStatusCode.InternalServerError;
 
-            var problem = ex is ApplicationException
+            ProblemDetails problem = ex is ApplicationException
                 ? new()
                 {
                     Status = (int)HttpStatusCode.BadRequest
@@ -36,7 +36,7 @@ public class UnhandledExceptionMiddleware : IMiddleware
                     ,
                     Detail = ex.Message
                 }
-                : (ProblemDetails)new()
+                : new()
                 {
                     Status = (int)HttpStatusCode.InternalServerError
                     ,
