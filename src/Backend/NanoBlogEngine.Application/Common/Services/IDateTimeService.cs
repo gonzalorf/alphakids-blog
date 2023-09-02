@@ -1,6 +1,6 @@
 ﻿namespace NanoBlogEngine.Application.Common.Services;
 
-public interface IDateTime
+public interface IDateTimeService
 {
     DateTime Now { get; }
 }

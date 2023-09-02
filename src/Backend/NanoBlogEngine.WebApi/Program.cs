@@ -6,6 +6,8 @@ using NanoBlogEngine.WebApi.Middleware;
 using NanoBlogEngine.WebApi.OptionsConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using NanoBlogEngine.Application.Users.Services;
+using NanoBlogEngine.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 // Clean Architecture
 builder.Services.AddApplication();
@@ -30,6 +35,8 @@ builder.Services.ConfigureOptions<JwtBearerOptionsConfig>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddSingleton<IConfigureOptions<JwtBearerOptions>, JwtBearerOptionsConfig>();
 builder.Services.AddSingleton<IJwtProvider, JwtProvider>();
+
+
 
 // CORS
 builder.Services.AddCors(options =>

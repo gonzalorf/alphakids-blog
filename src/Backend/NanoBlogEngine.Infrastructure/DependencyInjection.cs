@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NanoBlogEngine.Infrastructure.Outbox;
 using NanoBlogEngine.Infrastructure.Database.Behaviors;
+using NanoBlogEngine.Infrastructure.Interceptors;
+using NanoBlogEngine.Application.Common.Services;
+using NanoBlogEngine.Infrastructure.Services;
 
 namespace NanoBlogEngine.Infrastructure;
 
@@ -21,6 +24,9 @@ public static class DependencyInjection
 IConfiguration configuration)
     {
         var assembly = typeof(DependencyInjection).Assembly;
+
+        _ = services.AddTransient<IDateTimeService, DateTimeService>();
+        _ = services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
         _ = services.AddDbContext<ApplicationDbContext>(options =>
         {

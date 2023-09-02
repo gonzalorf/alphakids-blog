@@ -10,11 +10,11 @@ namespace NanoBlogEngine.Infrastructure.Interceptors;
 public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
 {
     private readonly ICurrentUserService _currentUserService;
-    private readonly IDateTime _dateTime;
+    private readonly IDateTimeService _dateTime;
 
     public AuditableEntitySaveChangesInterceptor(
         ICurrentUserService currentUserService,
-        IDateTime dateTime)
+        IDateTimeService dateTime)
     {
         _currentUserService = currentUserService;
         _dateTime = dateTime;
@@ -42,13 +42,13 @@ public class AuditableEntitySaveChangesInterceptor : SaveChangesInterceptor
         {
             if (entry.State == EntityState.Added)
             {
-                entry.Entity.CreatedBy = _currentUserService.UserId?.ToString();
+                entry.Entity.CreatedBy = _currentUserService?.UserId?.ToString();
                 entry.Entity.Created = _dateTime.Now;
             } 
 
             if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
             {
-                entry.Entity.UpdatedBy = _currentUserService.UserId?.ToString();
+                entry.Entity.UpdatedBy = _currentUserService?.UserId?.ToString();
                 entry.Entity.Updated = _dateTime.Now;
             }
         }
