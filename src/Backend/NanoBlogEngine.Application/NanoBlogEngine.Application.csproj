@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Behaviors\" />
-    <Folder Include="Users\Commands\SignUp\" />
+    <Folder Include="Outbox\" />
     <Folder Include="Users\Queries\" />
   </ItemGroup>
 

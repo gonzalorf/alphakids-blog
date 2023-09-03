@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Application.Outbox;
+﻿namespace NanoBlogEngine.Infrastructure.Outbox;
 
 public class OutboxMessage
 {

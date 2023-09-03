@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using NanoBlogEngine.Application.Outbox;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Database;
 
@@ -32,7 +31,7 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
                 domainEvent.OccurredOn,
                 type!,
                 data);
-            await context.OutboxMessages.AddAsync(outboxMessage);
+            await context.Set<OutboxMessage>().AddAsync(outboxMessage);
         }
 
     }

@@ -2,8 +2,6 @@
 using NanoBlogEngine.Domain.Posts;
 using NanoBlogEngine.Domain.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using NanoBlogEngine.Application.Outbox;
 using NanoBlogEngine.Infrastructure.Interceptors;
 
 namespace NanoBlogEngine.Infrastructure.Database;
@@ -18,8 +16,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<User> Users { get; set; }
     
-    public DbSet<OutboxMessage> OutboxMessages { get; set; }
-
     public ApplicationDbContext(
         DbContextOptions options,
         AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor) : base(options)

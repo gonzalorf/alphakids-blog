@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NanoBlogEngine.Application.Outbox;
+using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Database.Configurations;
 
