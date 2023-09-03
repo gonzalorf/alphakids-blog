@@ -4,9 +4,15 @@ using NanoBlogEngine.Application.Configuration.Commands;
 using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Database.Behaviors;
+
+/// <summary>
+/// This behavior is only for Commands, not Queries.
+/// </summary>
+/// <typeparam name="TRequest">Type of Command.</typeparam>
+/// <typeparam name="TResponse">Return type specified in the Command.</typeparam>
 public sealed class UnitOfWorkBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : notnull
+    where TRequest : notnull, ICommand
 {
 
     readonly IUnitOfWork unitOfWork;
@@ -23,11 +29,6 @@ public sealed class UnitOfWorkBehavior<TRequest, TResponse>
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-
-        if(!typeof(ICommand).IsAssignableFrom(typeof(TRequest)))
-        {
-            return await next();
-        }
 
         var response = await next();
 
