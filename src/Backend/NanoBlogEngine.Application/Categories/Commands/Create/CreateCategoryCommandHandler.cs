@@ -16,7 +16,7 @@ internal class CreateCategoryCommandHandler : ICommandHandler<CreateCategoryComm
     {
         var category = Category.CreateCategory(request.Name);
 
-        categoryRepository.Add(category);
+        _ = categoryRepository.Add(category);
 
         return Task.CompletedTask;
     }

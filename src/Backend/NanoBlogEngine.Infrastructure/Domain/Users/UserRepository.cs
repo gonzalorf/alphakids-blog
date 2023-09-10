@@ -1,8 +1,6 @@
-﻿using NanoBlogEngine.Domain.Users;
+﻿using Microsoft.EntityFrameworkCore;
+using NanoBlogEngine.Domain.Users;
 using NanoBlogEngine.Infrastructure.Database;
-using Microsoft.EntityFrameworkCore;
-using NanoBlogEngine.Domain.Posts;
-using Microsoft.Extensions.Hosting;
 
 namespace NanoBlogEngine.Infrastructure.Domain.Users;
 

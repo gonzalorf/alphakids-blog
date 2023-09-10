@@ -8,9 +8,8 @@ namespace NanoBlogEngine.BlazorSite.Authorization;
 
 public class NanoBlogAuthenticationStateProvider : AuthenticationStateProvider
 {
-    ClaimsPrincipal anonymousUser = new ClaimsPrincipal(new ClaimsIdentity());
-
-    ILocalStorageService localStorageService;
+    private readonly ClaimsPrincipal anonymousUser = new(new ClaimsIdentity());
+    private readonly ILocalStorageService localStorageService;
 
     public NanoBlogAuthenticationStateProvider(ILocalStorageService localStorageService)
     {
@@ -38,14 +37,15 @@ public class NanoBlogAuthenticationStateProvider : AuthenticationStateProvider
         catch
         {
             return await Task.FromResult(new AuthenticationState(anonymousUser));
-        }        
+        }
     }
 
     public async Task UpdateState(UserSession userSession)
     {
         ClaimsPrincipal claimsPrincipal;
 
-        if(userSession != null) {
+        if (userSession != null)
+        {
             claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(
                 new List<Claim>
                 {

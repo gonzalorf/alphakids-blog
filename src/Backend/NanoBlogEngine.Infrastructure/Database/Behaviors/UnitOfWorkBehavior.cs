@@ -1,6 +1,6 @@
-﻿using NanoBlogEngine.Domain.SeedWork;
-using MediatR;
+﻿using MediatR;
 using NanoBlogEngine.Application.Configuration.Commands;
+using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Database.Behaviors;
@@ -14,9 +14,8 @@ public sealed class UnitOfWorkBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull, ICommand
 {
-
-    readonly IUnitOfWork unitOfWork;
-    readonly IDomainEventsDispatcher domainEventsDispatcher;
+    private readonly IUnitOfWork unitOfWork;
+    private readonly IDomainEventsDispatcher domainEventsDispatcher;
 
     public UnitOfWorkBehavior(IUnitOfWork unitOfWork, IDomainEventsDispatcher domainEventsDispatcher)
     {
@@ -34,7 +33,7 @@ public sealed class UnitOfWorkBehavior<TRequest, TResponse>
 
         await domainEventsDispatcher.DispatchEventsAsync();
 
-        await unitOfWork.CommitAsync(cancellationToken);
+        _ = await unitOfWork.CommitAsync(cancellationToken);
 
         return response;
     }

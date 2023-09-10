@@ -2,7 +2,6 @@
 using NanoBlogEngine.Domain.Posts.Events;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Domain.Users;
-using System.Collections.Generic;
 
 namespace NanoBlogEngine.Domain.Posts;
 

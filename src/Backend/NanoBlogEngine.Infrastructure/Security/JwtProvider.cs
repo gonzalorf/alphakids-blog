@@ -1,7 +1,7 @@
-﻿using NanoBlogEngine.Application.Configuration.Services;
-using NanoBlogEngine.Domain.Users;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NanoBlogEngine.Application.Configuration.Services;
+using NanoBlogEngine.Domain.Users;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

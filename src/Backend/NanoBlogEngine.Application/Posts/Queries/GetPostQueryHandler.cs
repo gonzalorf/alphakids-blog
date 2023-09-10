@@ -1,6 +1,5 @@
 ﻿using NanoBlogEngine.Application.Configuration.Queries;
 using NanoBlogEngine.Domain.Posts;
-using MediatR;
 
 namespace NanoBlogEngine.Application.Posts.Queries;
 

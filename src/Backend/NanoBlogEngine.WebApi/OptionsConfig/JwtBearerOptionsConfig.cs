@@ -1,7 +1,7 @@
-﻿using NanoBlogEngine.Infrastructure.Security;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NanoBlogEngine.Infrastructure.Security;
 using System.Text;
 
 namespace NanoBlogEngine.WebApi.OptionsConfig;

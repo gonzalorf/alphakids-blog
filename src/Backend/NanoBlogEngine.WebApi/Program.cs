@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using NanoBlogEngine.Application;
 using NanoBlogEngine.Application.Configuration.Services;
+using NanoBlogEngine.Application.Users.Services;
 using NanoBlogEngine.Infrastructure;
 using NanoBlogEngine.Infrastructure.Security;
 using NanoBlogEngine.WebApi.Middleware;
 using NanoBlogEngine.WebApi.OptionsConfig;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Options;
-using NanoBlogEngine.Application.Users.Services;
 using NanoBlogEngine.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
-﻿using NanoBlogEngine.Domain.Posts;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NanoBlogEngine.Domain.Posts;
 
 namespace NanoBlogEngine.Infrastructure.Database.Configurations;
 

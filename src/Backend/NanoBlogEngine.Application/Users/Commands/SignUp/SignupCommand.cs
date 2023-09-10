@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NanoBlogEngine.Application.Users.Commands.SignUp;
+﻿namespace NanoBlogEngine.Application.Users.Commands.SignUp;
 internal class SignupCommand
 {
 }

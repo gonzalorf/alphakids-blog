@@ -1,19 +1,19 @@
-﻿using NanoBlogEngine.Domain.Categories;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using NanoBlogEngine.Application.Common.Services;
+using NanoBlogEngine.Domain.Categories;
 using NanoBlogEngine.Domain.Posts;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Domain.Users;
 using NanoBlogEngine.Infrastructure.Database;
+using NanoBlogEngine.Infrastructure.Database.Behaviors;
+using NanoBlogEngine.Infrastructure.Database.Interceptors;
 using NanoBlogEngine.Infrastructure.Domain;
 using NanoBlogEngine.Infrastructure.Domain.Categories;
 using NanoBlogEngine.Infrastructure.Domain.Posts;
 using NanoBlogEngine.Infrastructure.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using NanoBlogEngine.Infrastructure.Outbox;
-using NanoBlogEngine.Infrastructure.Database.Behaviors;
-using NanoBlogEngine.Infrastructure.Interceptors;
-using NanoBlogEngine.Application.Common.Services;
 using NanoBlogEngine.Infrastructure.Services;
 
 namespace NanoBlogEngine.Infrastructure;
@@ -46,7 +46,8 @@ IConfiguration configuration)
         _ = services.AddScoped<IUserRepository, UserRepository>();
         _ = services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 
-        _ = services.AddMediatR(configuration => {
+        _ = services.AddMediatR(configuration =>
+        {
             _ = configuration.RegisterServicesFromAssemblies(assembly);
             _ = configuration.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
         });

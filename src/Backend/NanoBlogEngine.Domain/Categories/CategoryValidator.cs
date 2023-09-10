@@ -1,5 +1,4 @@
-﻿using NanoBlogEngine.Domain.Posts;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace NanoBlogEngine.Domain.Categories;
 

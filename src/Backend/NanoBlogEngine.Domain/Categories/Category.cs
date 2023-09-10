@@ -1,13 +1,12 @@
-﻿using NanoBlogEngine.Domain.Posts;
-using NanoBlogEngine.Domain.SeedWork;
+﻿using NanoBlogEngine.Domain.SeedWork;
 
 namespace NanoBlogEngine.Domain.Categories;
 
-public class Category: Entity<CategoryId>, IAggregateRoot
+public class Category : Entity<CategoryId>, IAggregateRoot
 {
     public string Name { get; private set; }
 
-    private Category(CategoryId id, string name) : base (id)
+    private Category(CategoryId id, string name) : base(id)
     {
         Name = name;
     }

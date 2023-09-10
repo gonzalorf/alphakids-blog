@@ -15,7 +15,7 @@ public class Program
         builder.RootComponents.Add<App>("#app");
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
-        builder.Services.AddHttpClient<BlogService>((serviceProvider, httpClient) =>
+        _ = builder.Services.AddHttpClient<BlogService>((serviceProvider, httpClient) =>
         {
             // Set the base address of the named client.
             httpClient.BaseAddress = new Uri("https://localhost:7237/api/");
@@ -24,8 +24,8 @@ public class Program
             httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
         });
 
-        builder.Services.AddBlazoredLocalStorage();
-        builder.Services.AddScoped<AuthenticationStateProvider, NanoBlogAuthenticationStateProvider>();
+        _ = builder.Services.AddBlazoredLocalStorage();
+        _ = builder.Services.AddScoped<AuthenticationStateProvider, NanoBlogAuthenticationStateProvider>();
 
         await builder.Build().RunAsync();
     }

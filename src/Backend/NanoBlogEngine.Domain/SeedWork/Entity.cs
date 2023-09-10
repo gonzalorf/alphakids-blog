@@ -1,11 +1,9 @@
-﻿using NanoBlogEngine.Domain.Categories;
-
-namespace NanoBlogEngine.Domain.SeedWork;
+﻿namespace NanoBlogEngine.Domain.SeedWork;
 
 /// <summary>
 /// Base class for entities.
 /// </summary>
-public abstract class Entity<TIdType> : IEntity where TIdType : TypedIdValueBase 
+public abstract class Entity<TIdType> : IEntity where TIdType : TypedIdValueBase
 {
     public TIdType Id { get; private set; }
 

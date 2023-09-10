@@ -1,6 +1,5 @@
 ﻿using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Database;
-using NanoBlogEngine.Infrastructure.Outbox;
 
 namespace NanoBlogEngine.Infrastructure.Domain;
 

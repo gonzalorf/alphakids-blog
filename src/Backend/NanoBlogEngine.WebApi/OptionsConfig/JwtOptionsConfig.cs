@@ -1,5 +1,5 @@
-﻿using NanoBlogEngine.Infrastructure.Security;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
+using NanoBlogEngine.Infrastructure.Security;
 
 namespace NanoBlogEngine.WebApi.OptionsConfig;
 

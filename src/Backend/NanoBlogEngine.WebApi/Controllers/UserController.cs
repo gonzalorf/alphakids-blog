@@ -1,8 +1,7 @@
-﻿using NanoBlogEngine.Application.Users.Commands.Login;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using NanoBlogEngine.Application.Users;
+using Microsoft.AspNetCore.Mvc;
+using NanoBlogEngine.Application.Users.Commands.Login;
 
 namespace NanoBlogEngine.WebApi.Controllers;
 

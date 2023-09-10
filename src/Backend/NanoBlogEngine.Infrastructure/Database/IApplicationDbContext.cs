@@ -1,7 +1,7 @@
-﻿using NanoBlogEngine.Domain.Categories;
+﻿using Microsoft.EntityFrameworkCore;
+using NanoBlogEngine.Domain.Categories;
 using NanoBlogEngine.Domain.Posts;
 using NanoBlogEngine.Domain.Users;
-using Microsoft.EntityFrameworkCore;
 
 namespace NanoBlogEngine.Infrastructure.Database;
 

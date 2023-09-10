@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Domain.Posts;
+﻿namespace NanoBlogEngine.Domain.Categories;
 
 public class CategoryInvalidStateException : ApplicationException
 {

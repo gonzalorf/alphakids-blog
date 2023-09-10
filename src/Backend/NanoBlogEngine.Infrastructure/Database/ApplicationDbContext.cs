@@ -1,21 +1,21 @@
-﻿using NanoBlogEngine.Domain.Categories;
+﻿using Microsoft.EntityFrameworkCore;
+using NanoBlogEngine.Domain.Categories;
 using NanoBlogEngine.Domain.Posts;
 using NanoBlogEngine.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-using NanoBlogEngine.Infrastructure.Interceptors;
+using NanoBlogEngine.Infrastructure.Database.Interceptors;
 
 namespace NanoBlogEngine.Infrastructure.Database;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
-    readonly AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor;
+    private readonly AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor;
 
     public DbSet<Post> Posts { get; set; }
 
     public DbSet<Category> Categories { get; set; }
 
     public DbSet<User> Users { get; set; }
-    
+
     public ApplicationDbContext(
         DbContextOptions options,
         AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor) : base(options)
@@ -29,7 +29,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.AddInterceptors(auditableEntitySaveChangesInterceptor);
+        _ = optionsBuilder.AddInterceptors(auditableEntitySaveChangesInterceptor);
     }
 }
 

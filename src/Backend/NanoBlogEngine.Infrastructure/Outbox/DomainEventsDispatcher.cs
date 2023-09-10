@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using NanoBlogEngine.Domain.SeedWork;
+﻿using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Infrastructure.Database;
+using System.Text.Json;
 
 namespace NanoBlogEngine.Infrastructure.Outbox;
 
@@ -24,14 +24,14 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
 
         foreach (var domainEvent in domainEvents)
         {
-            var type = domainEvent.GetType().FullName;            
-            var data =  JsonSerializer.Serialize(domainEvent, domainEvent.GetType());
+            var type = domainEvent.GetType().FullName;
+            var data = JsonSerializer.Serialize(domainEvent, domainEvent.GetType());
 
             var outboxMessage = new OutboxMessage(
                 domainEvent.OccurredOn,
                 type!,
                 data);
-            await context.Set<OutboxMessage>().AddAsync(outboxMessage);
+            _ = await context.Set<OutboxMessage>().AddAsync(outboxMessage);
         }
 
     }

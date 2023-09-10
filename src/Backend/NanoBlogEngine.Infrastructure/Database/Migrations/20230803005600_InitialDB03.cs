@@ -2,28 +2,27 @@
 
 #nullable disable
 
-namespace NanoBlogEngine.Infrastructure.Database.Migrations
+namespace NanoBlogEngine.Infrastructure.Database.Migrations;
+
+/// <inheritdoc />
+public partial class InitialDB03 : Migration
 {
     /// <inheritdoc />
-    public partial class InitialDB03 : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
-                name: "Role",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-        }
+        _ = migrationBuilder.AddColumn<string>(
+            name: "Role",
+            table: "Users",
+            type: "nvarchar(max)",
+            nullable: false,
+            defaultValue: "");
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Role",
-                table: "Users");
-        }
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        _ = migrationBuilder.DropColumn(
+            name: "Role",
+            table: "Users");
     }
 }
