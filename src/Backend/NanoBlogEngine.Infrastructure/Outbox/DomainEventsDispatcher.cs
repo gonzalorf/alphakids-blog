@@ -7,10 +7,12 @@ namespace NanoBlogEngine.Infrastructure.Outbox;
 public class DomainEventsDispatcher : IDomainEventsDispatcher
 {
     private readonly ApplicationDbContext context;
+    private readonly IOutboxMessageRepository outboxRepository;
 
-    public DomainEventsDispatcher(ApplicationDbContext context)
+    public DomainEventsDispatcher(ApplicationDbContext context, IOutboxMessageRepository outboxRepository)
     {
         this.context = context;
+        this.outboxRepository = outboxRepository;
     }
 
     public async Task DispatchEventsAsync()
@@ -31,7 +33,7 @@ public class DomainEventsDispatcher : IDomainEventsDispatcher
                 domainEvent.OccurredOn,
                 type!,
                 data);
-            _ = await context.Set<OutboxMessage>().AddAsync(outboxMessage);
+            await outboxRepository.Add(outboxMessage);
         }
 
     }
