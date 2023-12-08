@@ -3,7 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NanoBlogEngine.Application.Common.Services;
 using NanoBlogEngine.Domain.Categories;
+using NanoBlogEngine.Domain.Comments;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Rates;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Domain.Users;
 using NanoBlogEngine.Infrastructure.Database;
@@ -11,7 +13,9 @@ using NanoBlogEngine.Infrastructure.Database.Behaviors;
 using NanoBlogEngine.Infrastructure.Database.Interceptors;
 using NanoBlogEngine.Infrastructure.Domain;
 using NanoBlogEngine.Infrastructure.Domain.Categories;
+using NanoBlogEngine.Infrastructure.Domain.Comments;
 using NanoBlogEngine.Infrastructure.Domain.Posts;
+using NanoBlogEngine.Infrastructure.Domain.Rates;
 using NanoBlogEngine.Infrastructure.Domain.Users;
 using NanoBlogEngine.Infrastructure.Outbox;
 using NanoBlogEngine.Infrastructure.Services;
@@ -42,8 +46,11 @@ IConfiguration configuration)
         _ = services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         _ = services.AddScoped<IPostRepository, PostRepository>();
+        _ = services.AddScoped<ICommentRepository, CommentRepository>();
+        _ = services.AddScoped<IRateRepository, RateRepository>();
         _ = services.AddScoped<ICategoryRepository, CategoryRepository>();
         _ = services.AddScoped<IUserRepository, UserRepository>();
+        _ = services.AddScoped<IOutboxMessageRepository, OutboxMessageRepository>();
         _ = services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
 
         _ = services.AddMediatR(configuration =>
