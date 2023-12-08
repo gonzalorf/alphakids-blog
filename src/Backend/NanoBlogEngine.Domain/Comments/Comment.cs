@@ -6,7 +6,7 @@ using NanoBlogEngine.Domain.Users;
 
 namespace NanoBlogEngine.Domain.Comments;
 
-public class Comment : Entity<CommentId>
+public class Comment : Entity<CommentId>, IAggregateRoot
 {
     public string Content { get; private set; } = string.Empty;
     public PostId PostId { get; private set; }

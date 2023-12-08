@@ -5,7 +5,7 @@ using NanoBlogEngine.Domain.Users;
 
 namespace NanoBlogEngine.Domain.Rates;
 
-public class Rate : Entity<RateId>
+public class Rate : Entity<RateId>, IAggregateRoot
 {
     public int Value { get; private set; }
     public PostId PostId { get; private set; }
