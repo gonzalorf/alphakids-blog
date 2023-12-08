@@ -1,6 +1,6 @@
 ﻿using NanoBlogEngine.Domain.SeedWork;
 
-namespace NanoBlogEngine.Domain.Posts;
+namespace NanoBlogEngine.Domain.Comments;
 
 public record CommentId(Guid Value) : TypedIdValueBase(Value);
 

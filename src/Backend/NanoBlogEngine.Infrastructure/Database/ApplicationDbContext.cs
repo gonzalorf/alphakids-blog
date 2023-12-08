@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using NanoBlogEngine.Domain.Categories;
+using NanoBlogEngine.Domain.Comments;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Rates;
 using NanoBlogEngine.Domain.Users;
 using NanoBlogEngine.Infrastructure.Database.Interceptors;
 
@@ -11,6 +14,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     private readonly AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor;
 
     public DbSet<Post> Posts { get; set; }
+
+    public DbSet<Comment> Comments { get; set; }
+
+    public DbSet<Rate> Rates { get; set; }
 
     public DbSet<Category> Categories { get; set; }
 
@@ -33,14 +40,14 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 }
 
-//public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-//{
-//    public ApplicationDbContext CreateDbContext(string[] args)
-//    {
-//        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-//        _ = optionsBuilder.UseSqlServer("Data Source=localhost\\SQLExpress;Initial Catalog=NanoBlog;persist security info=True;Integrated Security=SSPI;Encrypt=false;");
+public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+{
+    public ApplicationDbContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        _ = optionsBuilder.UseSqlServer("Data Source=localhost\\SQLExpress;Initial Catalog=NanoBlog;persist security info=True;Integrated Security=SSPI;Encrypt=false;");
 
-//        return new ApplicationDbContext(optionsBuilder.Options);
-//    }
-//}
+        return new ApplicationDbContext(optionsBuilder.Options, null);
+    }
+}
 

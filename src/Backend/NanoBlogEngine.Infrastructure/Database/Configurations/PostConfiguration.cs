@@ -16,16 +16,6 @@ internal class PostConfiguration : IEntityTypeConfiguration<Post>
             id => id.Value
             , value => new PostId(value));
 
-        _ = builder.HasMany(o => o.Comments)
-            .WithOne()
-            .HasForeignKey("PostId")
-            .IsRequired();
-
-        _ = builder.HasMany(o => o.Rates)
-            .WithOne()
-            .HasForeignKey("PostId")
-            .IsRequired();
-
         _ = builder
             .HasMany(o => o.Categories)
             .WithMany();

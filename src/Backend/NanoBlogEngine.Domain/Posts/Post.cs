@@ -1,5 +1,7 @@
 ﻿using NanoBlogEngine.Domain.Categories;
+using NanoBlogEngine.Domain.Comments;
 using NanoBlogEngine.Domain.Posts.Events;
+using NanoBlogEngine.Domain.Rates;
 using NanoBlogEngine.Domain.SeedWork;
 using NanoBlogEngine.Domain.Users;
 
@@ -7,16 +9,12 @@ namespace NanoBlogEngine.Domain.Posts;
 
 public class Post : AuditableEntity<PostId>, IAggregateRoot
 {
-    private readonly List<Comment> comments = new();
     private readonly List<Category> categories = new();
-    private readonly List<Rate> rates = new();
 
     public string Title { get; private set; } = string.Empty;
     public string Preview { get; private set; } = string.Empty;
     public string Content { get; private set; } = string.Empty;
-    public IReadOnlyCollection<Comment> Comments => comments.AsReadOnly();
     public IReadOnlyCollection<Category> Categories => categories.AsReadOnly();
-    public IReadOnlyCollection<Rate> Rates => rates.AsReadOnly();
 
     private Post() : base() { }
 
@@ -59,32 +57,6 @@ public class Post : AuditableEntity<PostId>, IAggregateRoot
         {
             RemoveCategory(category);
         }
-    }
-
-    public void AddRate(User? author, int value)
-    {
-        var rate = new Rate(
-            new RateId(Guid.NewGuid())
-            , value
-            , author);
-
-        RateValidator.ValidateRate(rate);
-
-        rates.Add(rate);
-
-        AddDomainEvent(new PostRatedEvent(Id));
-    }
-
-    public void AddComment(User? author, string content)
-    {
-        var comment = new Comment(
-            new CommentId(Guid.NewGuid())
-            , content
-            , author);
-
-        comments.Add(comment);
-
-        AddDomainEvent(new PostCommentedEvent(Id, comment.Id));
     }
 
     public void AddCategory(Category category)

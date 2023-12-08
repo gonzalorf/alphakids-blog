@@ -1,5 +1,6 @@
 ﻿using NanoBlogEngine.Application.Configuration.Queries;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Exceptions;
 
 namespace NanoBlogEngine.Application.Posts.Queries;
 

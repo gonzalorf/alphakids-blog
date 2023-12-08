@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NanoBlogEngine.Application.Categories.Commands.Create;
 using NanoBlogEngine.Application.Categories.Queries;
-using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Exceptions;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

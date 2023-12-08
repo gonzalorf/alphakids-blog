@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Domain.Posts;
+﻿namespace NanoBlogEngine.Domain.Posts.Exceptions;
 
 public sealed class PostNotFoundException : ApplicationException
 {

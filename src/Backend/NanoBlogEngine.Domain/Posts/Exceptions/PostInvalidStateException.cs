@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Domain.Posts;
+﻿namespace NanoBlogEngine.Domain.Posts.Exceptions;
 
 public class PostInvalidStateException : ApplicationException
 {

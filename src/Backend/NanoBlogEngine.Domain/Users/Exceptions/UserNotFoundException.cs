@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Domain.Users;
+﻿namespace NanoBlogEngine.Domain.Users.Exceptions;
 
 public sealed class UserNotFoundException : ApplicationException
 {

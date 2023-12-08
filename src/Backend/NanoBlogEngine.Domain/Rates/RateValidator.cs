@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
+using NanoBlogEngine.Domain.Posts.Exceptions;
+using NanoBlogEngine.Domain.Rates.Exceptions;
 
-namespace NanoBlogEngine.Domain.Posts;
+namespace NanoBlogEngine.Domain.Rates;
 
 public class RateValidator : AbstractValidator<Rate>
 {

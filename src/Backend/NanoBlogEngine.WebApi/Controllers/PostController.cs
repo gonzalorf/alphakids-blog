@@ -1,13 +1,14 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NanoBlogEngine.Application.Posts.Commands.AddComment;
-using NanoBlogEngine.Application.Posts.Commands.AddRate;
+using NanoBlogEngine.Application.Comments.Commands.AddComment;
 using NanoBlogEngine.Application.Posts.Commands.Create;
 using NanoBlogEngine.Application.Posts.Commands.Remove;
 using NanoBlogEngine.Application.Posts.Commands.Update;
 using NanoBlogEngine.Application.Posts.Queries;
+using NanoBlogEngine.Application.Rates.Commands.AddRate;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Exceptions;
 
 namespace NanoBlogEngine.WebApi.Controllers;
 

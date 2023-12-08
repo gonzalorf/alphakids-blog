@@ -1,4 +1,4 @@
-﻿namespace NanoBlogEngine.Domain.Posts;
+﻿namespace NanoBlogEngine.Domain.Rates.Exceptions;
 
 public class RateInvalidValueException : ApplicationException
 {

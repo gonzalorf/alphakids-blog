@@ -2,10 +2,10 @@
 using NanoBlogEngine.Domain.Posts;
 using NanoBlogEngine.Domain.Users;
 
-namespace NanoBlogEngine.Application.Posts.Commands.AddRate;
+namespace NanoBlogEngine.Application.Comments.Commands.AddComment;
 
-public record AddRateCommand(
+public record AddCommentCommand(
 PostId PostId
-, int Value
-, UserId? RaterId
+, string Content
+, UserId? AuthorId
 ) : CommandBase;

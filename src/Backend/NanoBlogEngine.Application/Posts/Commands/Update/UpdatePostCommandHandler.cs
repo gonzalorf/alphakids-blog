@@ -1,6 +1,7 @@
 ﻿using NanoBlogEngine.Application.Configuration.Commands;
 using NanoBlogEngine.Domain.Categories;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Exceptions;
 
 namespace NanoBlogEngine.Application.Posts.Commands.Update;
 

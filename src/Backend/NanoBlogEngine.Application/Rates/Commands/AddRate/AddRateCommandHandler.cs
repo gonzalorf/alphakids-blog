@@ -1,18 +1,23 @@
 ﻿using NanoBlogEngine.Application.Configuration.Commands;
+using NanoBlogEngine.Domain.Comments;
 using NanoBlogEngine.Domain.Posts;
+using NanoBlogEngine.Domain.Posts.Exceptions;
+using NanoBlogEngine.Domain.Rates;
 using NanoBlogEngine.Domain.Users;
 
-namespace NanoBlogEngine.Application.Posts.Commands.AddRate;
+namespace NanoBlogEngine.Application.Rates.Commands.AddRate;
 
 internal class AddRateCommandHandler : ICommandHandler<AddRateCommand>
 {
     private readonly IUserRepository userRepository;
     private readonly IPostRepository postRepository;
+    private readonly IRateRepository rateRepository;
 
-    public AddRateCommandHandler(IUserRepository userRepository, IPostRepository postRepository)
+    public AddRateCommandHandler(IUserRepository userRepository, IPostRepository postRepository, IRateRepository rateRepository)
     {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
+        this.rateRepository = rateRepository;
     }
 
     public async Task Handle(AddRateCommand request, CancellationToken cancellationToken)
@@ -25,6 +30,12 @@ internal class AddRateCommandHandler : ICommandHandler<AddRateCommand>
             rater = await userRepository.GetById(request.RaterId);
         }
 
-        post.AddRate(rater, request.Value);
+        var rate = Rate.CreateRate(
+            request.Value
+            , post.Id
+            , rater is null ? new UserId(Guid.Empty) : rater.Id
+        );
+
+        await rateRepository.Add(rate);
     }
 }
