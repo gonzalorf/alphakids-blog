@@ -1,9 +1,5 @@
 ﻿using NanoBlogEngine.Domain.Categories;
-using NanoBlogEngine.Domain.Comments;
-using NanoBlogEngine.Domain.Posts.Events;
-using NanoBlogEngine.Domain.Rates;
 using NanoBlogEngine.Domain.SeedWork;
-using NanoBlogEngine.Domain.Users;
 
 namespace NanoBlogEngine.Domain.Posts;
 
@@ -57,6 +53,8 @@ public class Post : AuditableEntity<PostId>, IAggregateRoot
         {
             RemoveCategory(category);
         }
+
+        PostValidator.ValidatePost(this);
     }
 
     public void AddCategory(Category category)
